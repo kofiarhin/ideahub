@@ -1,44 +1,60 @@
-//projects with their urls
-KareBraids
-https://github.com/kofiarhin/amas-kitchen
-git@github.com:kofiarhin/amas-kitchen.git
+# Project List
 
-Amas Kitchen
-https://github.com/kofiarhin/amas-kitchen
-git@github.com:kofiarhin/amas-kitchen.git
-ge
-DevKofi
-https://github.com/kofiarhin/devkofi
-git@github.com:kofiarhin/devkofi.git
-https://devkofi.com/
+A central index of active projects and their GitHub repositories.
 
-Codex WorkFlow
+## Piano360
 
-Codex Workflow
-https://github.com/kofiarhin/codex-workflow-kit
-git@github.com:kofiarhin/codex-workflow-kit.git
+- HTTPS: https://github.com/kofiarhin/piano360
+- SSH: `git@github.com:kofiarhin/piano360.git`
 
-Taxify
-https://github.com/kofiarhin/taxify
-git@github.com:kofiarhin/taxify.git
+## Brain
 
-Kflix
-https://github.com/kofiarhin/kflix
-git@github.com:kofiarhin/kflix.git
+- HTTPS: https://github.com/kofiarhin/brain
+- SSH: `git@github.com:kofiarhin/brain.git`
+- Live: https://brain-pi-black.vercel.app/notes
 
-Banging Prices
-https://github.com/kofiarhin/banging-prices
-git@github.com:kofiarhin/banging-prices.git
+## KareBraids
 
-MoggOff
-https://github.com/kofiarhin/moggedoff
-git@github.com:kofiarhin/moggedoff.git
+- HTTPS: https://github.com/kofiarhin/karebraids
+- SSH: `git@github.com:kofiarhin/karebraids.git`
 
-Brain App
-https://github.com/kofiarhin/brain
-git@github.com:kofiarhin/brain.git
-https://brain-pi-black.vercel.app/notes //live demo
+## Amas Kitchen
 
-projectos
-git@github.com:kofiarhin/projectos.git
-https://github.com/kofiarhin/projectos
+- HTTPS: https://github.com/kofiarhin/amas-kitchen
+- SSH: `git@github.com:kofiarhin/amas-kitchen.git`
+
+## DevKofi
+
+- HTTPS: https://github.com/kofiarhin/devkofi
+- SSH: `git@github.com:kofiarhin/devkofi.git`
+- Live: https://devkofi.com/
+
+## Codex Workflow
+
+- HTTPS: https://github.com/kofiarhin/codex-workflow-kit
+- SSH: `git@github.com:kofiarhin/codex-workflow-kit.git`
+
+## Taxify
+
+- HTTPS: https://github.com/kofiarhin/taxify
+- SSH: `git@github.com:kofiarhin/taxify.git`
+
+## Kflix
+
+- HTTPS: https://github.com/kofiarhin/kflix
+- SSH: `git@github.com:kofiarhin/kflix.git`
+
+## Banging Prices
+
+- HTTPS: https://github.com/kofiarhin/banging-prices
+- SSH: `git@github.com:kofiarhin/banging-prices.git`
+
+## MoggOff
+
+- HTTPS: https://github.com/kofiarhin/moggedoff
+- SSH: `git@github.com:kofiarhin/moggedoff.git`
+
+## Projectos
+
+- HTTPS: https://github.com/kofiarhin/projectos
+- SSH: `git@github.com:kofiarhin/projectos.git`
