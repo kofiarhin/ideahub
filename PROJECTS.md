@@ -17,7 +17,7 @@ This is the only canonical project index for the Ideas Hub.
 | [Kflix](projects/kflix.md) | Project details not yet documented | https://github.com/kofiarhin/kflix | — | Needs overview and current status |
 | [Banging Prices](projects/banging-prices.md) | Project details not yet documented | https://github.com/kofiarhin/banging-prices | — | Needs overview and current status |
 | [MoggOff](projects/moggoff.md) | Project details not yet documented | https://github.com/kofiarhin/moggedoff | — | Repository slug differs from project display name |
-| [Projectos](projects/projectos.md) | Project details not yet documented | https://github.com/kofiarhin/projectos | — | Needs overview and current status |
+| [ProjectOS](projects/projectos.md) | CLI-first autonomous development operating system for a multi-repository local workspace | https://github.com/kofiarhin/projectos | — | Phase 0 foundation validated; Phase 1 Domain and Persistence is next |
 
 ## Lifecycle Guidance
 
