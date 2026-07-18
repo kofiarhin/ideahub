@@ -6,16 +6,19 @@
 
 - **Lifecycle:** Exploring
 - **Working title:** Memory Sequence Game
+- **Planned repository name:** `memory-game`
 - **Type:** Responsive browser game
 - **Audience:** General players aged 8+
 - **Purpose:** A casual visual memory-training game where players memorize and reconstruct increasingly long card sequences.
-- **Status:** MVP concept approved; design and implementation have not started.
+- **Status:** MVP concept and detailed PRD completed; application repository creation remains blocked.
 
 ## Links
 
-- **Repository:** Not created
+- **Planned repository:** `https://github.com/kofiarhin/memory-game` — not created as of 2026-07-18
 - **Live application:** Not available
+- **Product requirements document:** `memory-game-PRD.md` generated outside GitHub; awaiting commit to the planned repository's `main` branch
 - **Ideas Hub:** [Project index](../PROJECTS.md)
+- **Ideas Hub draft PR:** https://github.com/kofiarhin/ideas/pull/1
 
 ## Current State
 
@@ -25,11 +28,29 @@ A player selects one visual category—colours, shapes, or familiar icons—then
 
 The game begins with three cards. Every correct round adds one card. The player receives one retry at the current sequence length; a second incorrect submission ends the run.
 
-No application repository or implementation currently exists.
+A detailed 669-line product requirements document was generated on 2026-07-18. It covers product goals, non-goals, audience, gameplay rules, scoring, state management, persistence, screens, accessibility, responsiveness, technical direction, functional requirements, acceptance criteria, testing, risks, milestones, and definition of done.
+
+The planned application repository is `kofiarhin/memory-game`. Multiple GitHub lookups returned `404 Not Found`, confirming that the repository does not currently exist or is not accessible to the connected GitHub app. The available connector actions can edit existing repositories but do not expose repository creation. The PRD has therefore not been committed to a repository or to a `main` branch.
+
+No application implementation currently exists.
+
+## Accomplished
+
+- Completed product discovery for the MVP.
+- Approved the complete Shared Understanding Handoff.
+- Defined the visual card categories: colours, shapes, and familiar icons.
+- Defined sequence playback, recall interaction, scoring direction, retries, persistence, accessibility, and responsive behaviour.
+- Added the project to the Ideas Hub project index and workspace landscape.
+- Created this durable project note with decisions, assumptions, scope, acceptance criteria, risks, and future ideas.
+- Generated a full PRD as `memory-game-PRD.md`.
+- Selected `memory-game` as the planned GitHub repository name.
+- Attempted repository creation and access through the connected GitHub tooling.
+- Verified that `kofiarhin/memory-game` does not currently exist or is not available to the connected GitHub app.
+- Opened Ideas Hub draft PR #1 to review the project documentation.
 
 ## Current Focus
 
-Prepare the first responsive web MVP with a focused, accessible gameplay loop and local browser persistence.
+Unblock repository creation, commit the completed PRD to the new repository's `main` branch, then begin the responsive web MVP.
 
 ## Core Gameplay
 
@@ -54,6 +75,7 @@ Prepare the first responsive web MVP with a focused, accessible gameplay loop an
 - Position the product as casual memory training, not a medical or therapeutic tool.
 - Use one endless progression mode for the MVP.
 - Do not require an account.
+- Use `memory-game` as the planned repository name.
 
 ### Cards and playback
 
@@ -92,6 +114,7 @@ Prepare the first responsive web MVP with a focused, accessible gameplay loop an
 - Briefly reveal the original sequence after submission.
 - Show the updated score and remaining retry.
 - Avoid additional penalties beyond ending the run after the second mistake.
+- The generated PRD proposes `sequence length² × 10` as the initial scoring formula; confirm it before implementation.
 
 ### Persistence
 
@@ -105,8 +128,9 @@ Store the following locally in the browser:
 ## Assumptions
 
 - The MVP will use React with the latest Vite.
+- TypeScript will be used for application code.
 - Tailwind CSS will be used for styling.
-- Vitest will cover frontend unit and interaction tests.
+- Vitest and React Testing Library will cover frontend unit and interaction tests.
 - No backend is needed for the MVP.
 - `localStorage` is sufficient for persistent progress and settings.
 - Cards will include accessible text labels rather than relying only on appearance.
@@ -181,6 +205,8 @@ Store the following locally in the browser:
 
 ## Risks And Edge Cases
 
+- Repository creation is currently blocked because the connected GitHub tooling cannot create repositories and `kofiarhin/memory-game` does not yet exist.
+- The completed PRD is not yet stored in a durable GitHub repository.
 - Repeated cards must remain independently selectable when duplicates are required.
 - The shuffled recall pool must include the exact card quantities needed to rebuild the sequence.
 - Rapid taps, clicks, or key presses must not bypass playback or transition locks.
@@ -209,16 +235,19 @@ These are ideas only and are not approved scope.
 ## Open Questions
 
 - Final product name and visual brand
-- Exact scoring formula
+- Whether to adopt the PRD's proposed `sequence length² × 10` scoring formula
 - Final card artwork and icon set
 - Maximum supported sequence length
 - Whether basic audio feedback belongs in the first release
 
 ## Next Actions
 
-1. Create the application repository.
-2. Produce the responsive UX and visual direction.
-3. Define the exact scoring formula and maximum sequence length.
-4. Implement sequence-generation and validation logic test-first.
-5. Build the gameplay screens and accessibility interactions.
-6. Validate persistence, input locking, repeated-card behaviour, and responsive layouts.
+1. Create `kofiarhin/memory-game` with `main` as the default branch and initialise it with a README.
+2. Grant the connected ChatGPT GitHub app access to the repository if required.
+3. Commit the completed `memory-game-PRD.md` as `PRD.md` directly to `main`.
+4. Update this project note and `PROJECTS.md` with the confirmed repository link.
+5. Produce the responsive UX and visual direction.
+6. Confirm the scoring formula and maximum sequence length.
+7. Implement sequence-generation and validation logic test-first.
+8. Build the gameplay screens and accessibility interactions.
+9. Validate persistence, input locking, repeated-card behaviour, and responsive layouts.
