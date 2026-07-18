@@ -5,228 +5,122 @@
 ## Snapshot
 
 - **Lifecycle:** Exploring
-- **Working title:** Memory Sequence Game
 - **Product name:** Memory Game
-- **Repository:** `kofiarhin/memory-game`
+- **Repository:** https://github.com/kofiarhin/memory-game
+- **Default branch:** `main`
 - **Type:** Responsive browser game
 - **Audience:** General players aged 8+
-- **Purpose:** A casual visual memory-training game where players memorize and reconstruct increasingly long card sequences.
-- **Status:** MVP implemented directly on `main`; PRD committed; local validation passes; deployment not configured.
+- **Status:** MVP implemented and audited; fixes merged; CI passing; deployment pending.
 
 ## Links
 
 - **Repository:** https://github.com/kofiarhin/memory-game
-- **HTTPS clone:** https://github.com/kofiarhin/memory-game.git
-- **SSH remote:** `git@github.com:kofiarhin/memory-game.git`
-- **Default branch:** `main`
-- **Visibility:** Public
 - **Product requirements:** https://github.com/kofiarhin/memory-game/blob/main/PRD.md
-- **Initial commit:** https://github.com/kofiarhin/memory-game/commit/5ce147d15c91a6f98b8bd4a05c29cb97bab70ac0
 - **MVP implementation:** https://github.com/kofiarhin/memory-game/commit/324d276bb6e6f3df3c62c7366cf63fa5ae73146a
-- **PRD commit:** https://github.com/kofiarhin/memory-game/commit/7cbc149890af5fbc3dad71aa28b4c1f0b6a31be5
-- **Dependency pinning:** https://github.com/kofiarhin/memory-game/commit/07dd7c1d95f1d971ff3d7f4118287e62dde46be7
+- **Audit fix PR:** https://github.com/kofiarhin/memory-game/pull/1
+- **Audit fix merge:** https://github.com/kofiarhin/memory-game/commit/3073edad00666fd8538af68ada4727639050aa16
 - **Live application:** Not deployed
 - **Ideas Hub:** [Project index](../PROJECTS.md)
-- **Ideas Hub draft PR:** https://github.com/kofiarhin/ideas/pull/1
 
 ## Current State
 
-The approved MVP has been implemented directly on the application repository's `main` branch.
+The MVP is implemented on `main`. Players choose colours, shapes, or familiar icons, watch cards appear one at a time, then rebuild the sequence from a shuffled pool.
 
-Players choose colours, shapes, or familiar icons, watch a sequence displayed one card at a time, and reconstruct the order from a shuffled card pool. Correct rounds increase the sequence length. The first incorrect submission consumes the retry, and the second ends the run.
+Core behaviour:
 
-The application includes responsive gameplay screens, local records and settings, accessible card names, keyboard-operable controls, reduced-motion handling, optional sound feedback, position-level validation, and recall-time statistics.
+- sequence starts at three cards;
+- each correct round adds one card;
+- first incorrect answer consumes the retry;
+- second incorrect answer ends and records the run;
+- score is `sequence length² × 10` per correct round;
+- progress and settings are stored locally;
+- touch, mouse, keyboard, reduced motion, and optional sound are supported.
 
-The complete product requirements document is stored as `PRD.md` in the application repository.
+The complete PRD is committed as `PRD.md`.
 
-Implementation validation was completed locally against the exact dependency versions committed to `package.json`:
+## Audit Completed
 
-- 6 test files passed
-- 19 automated tests passed
-- Oxlint completed with 0 warnings and 0 errors
-- TypeScript compilation succeeded
-- Vite production build succeeded
+A focused audit covered reducer transitions, persistence timing, repeated-card handling, playback input locking, feedback accessibility, tests, and CI.
 
-No live deployment has been configured yet.
+### Bugs found and fixed
 
-## Accomplished
+1. **Completed-run loss** — a run was only counted after the player clicked through the second-mistake feedback screen. Leaving that screen lost the completed-run statistic.
+2. **Weak accessible result feedback** — correct and incorrect cards were visually styled, but their accessible names did not include the result and the visual indicator relied too heavily on colour.
 
-- Completed MVP discovery and approved the Shared Understanding Handoff.
-- Defined the card categories, gameplay loop, playback timing, recall interaction, retry model, scoring, persistence, accessibility, and responsive behaviour.
-- Created the public repository `kofiarhin/memory-game` with `main` as the default branch.
-- Generated and committed the complete product requirements document.
-- Added the React, TypeScript, Vite, and Tailwind CSS application foundation.
-- Implemented colours, shapes, and familiar icon card decks.
-- Implemented unique sequences through length five and repeated-card sequences from length six onward.
-- Implemented one-second card playback with a 300 ms gap.
-- Implemented ordered recall slots, shuffled choices, undo, submission locking, validation, and sequence reveal.
-- Adopted `sequence length² × 10` as the MVP scoring formula.
-- Implemented one retry per run and game over after the second mistake.
-- Implemented best score, highest sequence length, settings, completed runs, completed rounds, and best recall-time persistence.
-- Added malformed-storage protection and local-data reset.
-- Added optional sound feedback and reduced-motion settings.
-- Added responsive mobile and desktop layouts with touch, mouse, and keyboard support.
-- Added automated domain, reducer, persistence, timer, and interaction tests.
-- Pinned the exact dependency versions used during validation.
-- Validated tests, lint, TypeScript, and the production build successfully.
+### Fixes
 
-## Current Focus
+- Completed runs are now recorded immediately when the second incorrect answer is submitted.
+- Continuing to the game-over screen no longer risks double-counting the run.
+- Feedback cards now include `correct` or `incorrect` in their accessible names.
+- Feedback cards now show visible check/cross badges in addition to colour.
+- Regression tests cover both fixes.
+- GitHub Actions now runs dependency installation, tests, lint, and production build on pull requests and pushes to `main`.
 
-Deploy the validated MVP, complete a manual browser and accessibility review, and collect the first round of player feedback before expanding scope.
-
-## Core Gameplay
-
-1. The player chooses colours, shapes, or icons.
-2. The game generates a sequence starting at three cards.
-3. Cards appear one at a time for one second, with a 300 ms gap.
-4. The recall screen shows ordered empty slots and a shuffled card grid.
-5. The player selects cards to fill the slots in order.
-6. The player may undo the latest selection.
-7. Submit becomes available only when every slot is filled.
-8. Correct answers award `sequence length² × 10` points and add one card.
-9. The first incorrect answer consumes the single retry and repeats the same sequence length.
-10. A second incorrect answer ends the run.
+Application PR #1 was squash-merged after CI passed.
 
 ## Decisions
 
-### Product
+- React 19, TypeScript, Vite, and Tailwind CSS.
+- Reducer-driven game session state.
+- Pure domain functions for sequence generation, scoring, and validation.
+- Browser persistence behind a storage adapter.
+- Vitest and React Testing Library for automated tests.
+- No backend, accounts, Redux Toolkit, or TanStack Query for the MVP.
+- Cards remain unique through length five; repeats are allowed from length six.
+- Playback remains one second per card with a 300 ms gap.
+- Result state must not rely on colour alone.
 
-- Build a responsive browser game for mobile and desktop.
-- Support touch, mouse, and keyboard input.
-- Target general players aged 8 and above.
-- Position the product as casual memory training, not a medical or therapeutic tool.
-- Use one endless progression mode for the MVP.
-- Do not require an account or backend.
-- Use `memory-game` as the repository name.
-- Use `main` as the default branch.
+## Implemented Scope
 
-### Technical
-
-- Use React 19, TypeScript, Vite, and Tailwind CSS.
-- Use a reducer for game-session state.
-- Keep sequence generation, scoring, and validation in pure domain functions.
-- Keep browser persistence behind a storage adapter.
-- Use Vitest and React Testing Library for automated tests.
-- Pin the dependency versions validated during implementation.
-- Do not use Redux Toolkit or TanStack Query because the MVP has no suitable global or server state requirement.
-
-### Cards and playback
-
-- Use colours, shapes, and familiar icons as the initial categories.
-- Use one category per run.
-- Show cards one at a time for one second with a 300 ms gap.
-- Keep playback speed constant.
-- Keep cards unique through sequence length five.
-- Allow and generate repeats from sequence length six onward.
-- Include accessible labels and symbols so colour is not the only identifier.
-
-### Scoring and run structure
-
-- Start every run with three cards.
-- Add one card after every correct round.
-- Score each correct round as `sequence length² × 10`.
-- Do not include recall speed in the score.
-- Record recall time only as a personal statistic.
-- Give the player one retry per run.
-- End the run after the second incorrect submission.
-
-### Persistence and feedback
-
-- Store best score, highest sequence length, preferred category, settings, run totals, completed rounds, and best recall time locally.
-- Do not persist an active run.
-- Mark every submitted position correct or incorrect.
-- Reveal the original sequence after submission.
-- Use encouraging, non-punitive feedback.
-- Continue gameplay safely if browser storage is unavailable or malformed.
-
-## MVP Scope
-
-### Implemented
-
-- Start and category-selection screen
+- Category selection
 - Endless sequence progression
-- Sequence generation and shuffled recall pool
-- Timed card playback
+- Timed playback
 - Ordered recall slots
+- Shuffled recall pool
 - Undo and submission locking
-- Position-level validation and original-sequence reveal
-- Retry tracking and game-over flow
+- Position-level validation
+- Sequence reveal
+- Retry and game-over flow
 - Progressive scoring
-- Best-score and highest-length records
-- Optional recall-time statistics
-- Local settings and data reset
-- Responsive mobile and desktop layouts
-- Touch, mouse, and keyboard support
+- Local records and settings
+- Responsive touch, mouse, and keyboard support
 - Reduced-motion handling
-- Optional sound feedback
-- Automated unit and interaction tests
+- Optional sound
+- Automated tests
+- GitHub Actions CI
 - README and PRD
-
-### Out of scope
-
-- User accounts
-- Backend API or MongoDB
-- Cloud synchronisation
-- Global leaderboards
-- Multiplayer
-- Daily challenges
-- Timed modes
-- Mixed-category sequences
-- User-created decks
-- Medical claims or cognitive assessment
-- Native mobile applications
-- Monetisation
 
 ## Validation
 
-The final implementation was tested locally after dependency versions were pinned:
+Original MVP validation:
 
-- `npm test` — 6 files and 19 tests passed
-- `npm run lint` — 0 warnings and 0 errors
-- `npm run build` — TypeScript and Vite production build passed
+- 6 test files and 19 tests passed
+- lint passed with 0 warnings and 0 errors
+- TypeScript and Vite production build passed
 
-Automated coverage includes:
+Audit validation:
 
-- unique and repeated sequence rules
-- deterministic seeded generation
-- recall-pool composition
-- scoring
-- position-level validation
-- first-mistake retry behaviour
-- second-mistake game over
-- persistence parsing and failure handling
-- category selection
-- playback input locking
-- slot filling
-- undo
-- submit readiness
-- local-data reset
+- GitHub Actions run #2 completed successfully
+- dependency installation passed
+- 7 test files and 21 tests passed
+- lint passed
+- production build passed
 
-## Risks And Edge Cases
+## Remaining Risks
 
-- A manual browser pass is still required across representative mobile and desktop devices.
-- Keyboard support is built from native controls but should receive a dedicated manual accessibility audit.
-- Correct and incorrect results use colour plus context, but screen-reader wording can be strengthened in a later accessibility pass.
-- Very long runs create long playback durations even though the recall slots scroll horizontally.
-- The current icon set uses emoji, whose appearance varies by operating system.
-- There is no cloud backup for locally stored progress.
-- Sound depends on browser Web Audio support and user interaction policies.
-- The application is not yet deployed, so production hosting behaviour has not been verified.
-
-## Open Questions
-
-- Final brand name and visual identity
-- Deployment platform and production URL
-- Whether to add a committed lockfile or use an automated dependency update workflow
-- Whether to add a formal maximum sequence length
-- Whether the next release should prioritise daily challenges, mixed categories, or leaderboards
+- Manual browser testing is still needed across representative mobile and desktop devices.
+- A dedicated keyboard and screen-reader review is still needed.
+- Very long runs create long playback durations.
+- Emoji appearance varies by operating system.
+- Local progress has no cloud backup.
+- Sound depends on browser Web Audio policies.
+- Production hosting has not been verified.
+- No lockfile is committed; CI currently uses `npm install` rather than `npm ci`.
 
 ## Next Actions
 
-1. Deploy the current `main` branch to a static host such as Vercel.
-2. Record the production URL in this project note and `PROJECTS.md`.
-3. Complete a manual mobile, desktop, keyboard, screen-reader, and reduced-motion review.
-4. Add a committed lockfile or configure a deliberate dependency-locking workflow.
-5. Collect player feedback on card readability, playback pacing, retry fairness, and difficulty progression.
-6. Resolve the final product name and visual brand.
-7. Prioritise the first post-MVP enhancement only after validation feedback.
+1. Deploy `main` to a static host.
+2. Record the production URL here and in `PROJECTS.md`.
+3. Complete manual mobile, desktop, keyboard, screen-reader, and reduced-motion testing.
+4. Add a lockfile or define a deliberate dependency-locking workflow.
+5. Collect player feedback before selecting post-MVP scope.
