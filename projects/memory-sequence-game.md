@@ -69,6 +69,8 @@ Application PR #1 was squash-merged after CI passed.
 - Cards remain unique through length five; repeats are allowed from length six.
 - Playback remains one second per card with a 300 ms gap.
 - Result state must not rely on colour alone.
+- Deploy the current static frontend to Vercel.
+- Reserve Heroku for a future backend only if backend scope is later approved; the current MVP has no backend to deploy.
 
 ## Implemented Scope
 
@@ -119,8 +121,9 @@ Audit validation:
 
 ## Next Actions
 
-1. Deploy `main` to a static host.
+1. Create the Vercel project from `main` using the Vite production build.
 2. Record the production URL here and in `PROJECTS.md`.
 3. Complete manual mobile, desktop, keyboard, screen-reader, and reduced-motion testing.
 4. Add a lockfile or define a deliberate dependency-locking workflow.
-5. Collect player feedback before selecting post-MVP scope.
+5. Use Heroku only if a separately approved backend is introduced.
+6. Collect player feedback before selecting post-MVP scope.
