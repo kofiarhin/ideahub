@@ -14,14 +14,15 @@ Piano360 is a MongoDB-backed course MVP for guided piano learning. It uses a `Co
 
 ## Current State
 
-- Lifecycle: Not documented
+- Lifecycle: Active discovery and planning
 - Stack: React, Vite, Node.js, Express, MongoDB, Mongoose
 - Testing: Vitest and React Testing Library for the client; Jest, Supertest, and `mongodb-memory-server` for the API
-- Current priority: Not documented
+- Current priority: Convert the completed Phase 0 audit into an approved implementation plan
 
 ## Current Focus
 
-Not documented.
+- Phase 0 implementation audit completed.
+- Review the audit findings and confirm the next implementation scope.
 
 ## Brainstorming
 
@@ -35,15 +36,14 @@ _No durable brainstorming notes captured yet._
 
 ## Assumptions
 
-- None recorded.
+- The completed audit is the Phase 0 implementation audit identified in the Architect run.
 
 ## Open Questions
 
-- What is the current product milestone?
+- Which audit findings should be implemented first?
 - Is a public deployment planned or already available?
-- Which course or learner experience should be improved next?
 
 ## Next Actions
 
-- Document the current lifecycle state and milestone.
-- Record the next learner-facing improvement when confirmed.
+- Record the audit findings and evidence in the active Architect run report.
+- Define and approve the first implementation task from the audit.
