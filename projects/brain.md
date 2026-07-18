@@ -24,7 +24,7 @@ The application covers notes, tasks, plans, reviews, goals, projects, ideas, con
 
 ## Current Focus
 
-Not documented.
+Verify Brain PR #9 separately. Superseded PR cleanup is complete.
 
 ## Brainstorming
 
@@ -36,10 +36,12 @@ _No durable brainstorming notes captured yet._
 - Codex-command workflows perform AI-assisted updates.
 - The authenticated chat interface is read-only unless write behavior is explicitly implemented later.
 - Day planning is separate from the memory-only `update brain` workflow.
+- PR #10 was closed without merging because its chat direction is superseded by current `main`.
+- PR #6 was closed without merging because its modular agent-instruction proposal is superseded.
 
 ## Assumptions
 
-- None recorded.
+- Closing PRs #10 and #6 does not remove any current behavior already present on `main`.
 
 ## Open Questions
 
@@ -49,5 +51,5 @@ _No durable brainstorming notes captured yet._
 
 ## Next Actions
 
+- Verify PR #9 against current `main` and record a merge or changes-needed recommendation.
 - Document the current production status and immediate milestone.
-- Clarify the boundary between Brain's MongoDB memory and this repository's cross-tool reference notes.
