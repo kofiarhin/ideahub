@@ -120,3 +120,13 @@ Interpret these phrases consistently:
 - `capture this` — propose an `INBOX.md` entry, then write only when approval is explicit.
 - `save to <project>` — update the named project file with the approved outcome.
 - `update hub` — refresh affected project notes plus root context/index files when necessary.
+
+## Architect Command Workflows
+
+The ChatGPT Architect project settings remain the global governance layer. Command workflows are command-specific and scoped; they cannot bypass discovery, approval, security, source-of-truth, isolation, or verification rules.
+
+- [`architect/README.md`](architect/README.md) is the canonical command registry.
+- [`architect/commands/good-morning.md`](architect/commands/good-morning.md) defines `good morning`, which writes only run-scoped audit and task files.
+- [`architect/commands/run-all-tasks.md`](architect/commands/run-all-tasks.md) defines `run all tasks`, which executes only eligible `ready` work.
+- Project records update only after verification.
+- Run artifacts live under `architect/runs/<run-id>/` and do not replace canonical project records or repository-local authority documents.

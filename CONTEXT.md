@@ -15,6 +15,8 @@ It exists so any GitHub-enabled AI agent can quickly understand the current proj
 - Open project files for deeper context.
 - Treat `INBOX.md` as unprocessed brainstorming, not confirmed direction.
 - Do not write changes without explicit approval.
+- Use [`architect/README.md`](architect/README.md) to resolve registered Architect commands.
+- Treat [`architect/runs/`](architect/runs/README.md) as operational audit, task, and report history, not canonical project truth.
 
 ## Working Profile
 
@@ -39,6 +41,7 @@ Default engineering preferences unless a project says otherwise:
 - **Brain** — a MERN personal operating system with MongoDB-backed memory and AI-assisted workflows.
 - **Codex Workflow Kit** — a reusable workflow system for AI coding agents.
 - **Ideas Hub** — this repository; the shared reference and brainstorming layer across tools.
+- **Architect Command System** — Ideas Hub-backed workflows for portfolio auditing, durable task queues, approval-aware execution, verification, reporting, and context maintenance.
 
 ### Learning and mentorship
 
@@ -74,6 +77,7 @@ Not documented yet. Agents must not infer priorities from repository order, rece
 - Several projects still need a clear purpose, lifecycle status, current focus, and next actions.
 - Current priorities and cross-project dependencies have not been documented.
 - The inbox will need occasional review so useful ideas move into durable project notes.
+- Architect audits depend on project records linking to current authoritative PRDs, specifications, plans, and repositories.
 
 ## Maintenance Rule
 
