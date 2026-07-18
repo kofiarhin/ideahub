@@ -10,17 +10,18 @@ Lifecycle: `Exploring`
 
 ## Links
 
-- Repository: Not created
+- Repository: https://github.com/kofiarhin/archon
+- Documentation PR: https://github.com/kofiarhin/archon/pull/1
 - Live application: Not deployed
-- PRD: Pending repository creation
+- PRD: Proposed in `kofiarhin/archon` pull request #1
 
 ## Current State
 
-The product name and high-level direction are approved. No implementation repository has been created yet, and no repository-local PRD or specification has been verified.
+The repository has been created and initialized. A draft repository-local PRD, proposed system architecture, development roadmap, security baseline, and initial architecture decision record are available in pull request #1. These documents are reviewable proposals and are not yet approved or merged.
 
 ## Current Focus
 
-Create the initial Archon repository and establish the approved MVP scope through a repository-local PRD before implementation begins.
+Review and approve the repository-local product definition before implementation begins.
 
 ## Brainstorming
 
@@ -39,7 +40,7 @@ Potential future capabilities include:
 - Starter code and GitHub repository bootstrapping
 - Visual architecture editing and team collaboration
 
-These remain ideas until explicitly approved in a PRD or specification.
+These remain ideas unless explicitly approved in the repository-local PRD or another accepted specification.
 
 ## Decisions
 
@@ -47,28 +48,27 @@ These remain ideas until explicitly approved in a PRD or specification.
 - The product category is an AI software architecture and developer-tooling platform.
 - The initial value proposition is: **From idea to architecture.**
 - The first release should focus on architecture documentation and implementation planning rather than full application code generation.
+- The application repository is `kofiarhin/archon`.
 
 ## Assumptions
 
 - Primary early users may include developers, freelancers, startup founders, students, and small engineering teams.
 - The initial interface may be web-based.
 - AI-generated output will require structured schemas, validation, and clear human review rather than being treated as automatically correct.
-- Technology choices discussed in chat are provisional until the PRD and architecture documents are approved.
+- Technology choices in pull request #1 remain proposed until approved and merged.
 
 ## Open Questions
 
-- Should the initial repository be public or private?
-- What exact user persona should the MVP optimise for first?
-- Which outputs are mandatory in the MVP versus post-MVP?
 - Should the MVP support one opinionated stack or recommend multiple stacks?
 - What usage limits, data retention rules, and billing model should apply?
 - Which AI provider and model strategy should be approved?
-- What are the acceptance criteria for architecture quality and export fidelity?
+- What quality benchmark and evaluation dataset should be used?
+- Which export formats beyond Markdown should be supported?
 
 ## Next Actions
 
-1. Create the `archon` GitHub repository.
-2. Add a repository-local PRD with testable acceptance criteria.
-3. Approve the MVP scope, primary persona, output contract, security requirements, and verification plan.
-4. Define the initial architecture and implementation plan.
-5. Begin implementation only after the PRD or Shared Understanding Handoff is explicitly approved.
+1. Review `kofiarhin/archon` pull request #1.
+2. Resolve the PRD's open decisions and amend its acceptance criteria where needed.
+3. Merge the documentation PR only when the MVP scope and proposed architecture are approved.
+4. Convert the approved roadmap into isolated implementation tasks.
+5. Begin implementation only after explicit approval.
