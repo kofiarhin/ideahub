@@ -51,6 +51,62 @@ When information conflicts:
 3. Ask for resolution when it materially affects the work.
 4. Update the durable note only after resolution is approved.
 
+## Ideas Hub Update Routing
+
+Requests such as `update Ideas Hub`, `update the hub`, `save to <project>`, or `record this` are normal governed write requests unless they exactly match a registered Architect command.
+
+Resolve the target context in this order:
+
+1. Recognized Architect command.
+2. Explicitly named Architect run.
+3. Explicitly named project or idea.
+4. Active project established by an approved handoff or current workflow.
+5. Referenced repository, file, issue, pull request, task, or work item.
+6. Best matching entry in `PROJECTS.md` and its project record.
+7. One focused clarification question when the destination remains materially ambiguous.
+
+Inspect available sources before asking a question. Do not ask for information already available in the repository, active run, referenced work item, or approved handoff.
+
+After resolving the project, route information by meaning:
+
+- **Current State** — verified implementation, deployment, lifecycle, stack, or other confirmed current fact.
+- **Current Focus** — explicitly confirmed work being pursued now.
+- **Brainstorming** — unapproved features, possibilities, approaches, and product ideas.
+- **Decisions** — explicitly approved product, architecture, workflow, or policy choices.
+- **Assumptions** — relevant beliefs that remain unverified.
+- **Open Questions** — unresolved choices, missing information, and material ambiguities.
+- **Next Actions** — concrete approved follow-up work that has not yet been completed.
+- **INBOX.md** — raw information whose project or meaning is still unclear and whose capture has been approved.
+
+Split a statement across sections when it contains multiple information types. Do not place an unapproved feature in `Decisions`, an unverified implementation claim in `Current State`, or a speculative action in `Next Actions`.
+
+### Feature Request Lifecycle
+
+Use the existing project record and Architect task lifecycle rather than creating a competing feature tracker:
+
+1. Record a proposed feature under the project's `Brainstorming` section.
+2. Record an explicitly approved direction under `Decisions`.
+3. Record approved follow-up work under `Next Actions`.
+4. During an applicable Architect run, classify unclear work as `needs_discovery`, `needs_spec`, or `needs_approval`.
+5. Mark work `ready` only when approved scope and acceptance criteria are sufficient for implementation.
+6. Implement only `ready` tasks through the permitted Architect execution workflow.
+7. After verification, update `Current State`, durable `Decisions`, and remaining `Next Actions` as needed.
+8. Remove or condense the original brainstorming entry only after its useful context has been preserved.
+
+GitHub Issues are optional. Create or link one only when the user requests it or the target project already uses Issues as its execution tracker. An issue may support delivery, but it does not replace the durable project record.
+
+Claims about implemented or deployed behavior require user-confirmed verification or traceable evidence before they become durable current state. If verification is unavailable, preserve the claim as an assumption, open question, blocker, or run finding as appropriate.
+
+### Root File Boundaries
+
+- Update `projects/<project>.md` for normal project knowledge changes.
+- Update `PROJECTS.md` only when a project's name, summary, repository, live URL, or lifecycle state changes.
+- Update `CONTEXT.md` only when the broad workspace landscape, priorities, or cross-project context changes.
+- Update `INBOX.md` only for approved raw capture whose durable destination is not yet clear.
+- Keep Architect audit, task, execution, and verification history under `architect/runs/`.
+
+Do not update every root file for a routine project change.
+
 ## Editing Rules
 
 - Preserve useful existing context unless removal is explicitly approved.
