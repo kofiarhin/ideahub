@@ -1,6 +1,6 @@
 # Workspace Context
 
-**Last updated:** 2026-07-18
+**Last updated:** 2026-07-19
 
 ## Purpose
 
@@ -40,6 +40,7 @@ Default engineering preferences unless a project says otherwise:
 
 - **Brain** — a MERN personal operating system with MongoDB-backed memory and AI-assisted workflows.
 - **Codex Workflow Kit** — a reusable workflow system for AI coding agents.
+- **Universal Agent System** — an active model-agnostic instruction architecture that preserves shared agent behavior and generates native files for Codex, Claude Code, Gemini CLI, and custom runtimes; v1.0.0 is implemented and deployment safety hardening is next.
 - **Ideas Hub** — this repository; the shared reference and brainstorming layer across tools.
 - **Architect Command System** — Ideas Hub-backed workflows for portfolio auditing, durable task queues, approval-aware execution, verification, reporting, and context maintenance.
 - **Archon** — an active AI-powered software architecture studio with an approved MVP specification; Phase 1 foundation implementation is next.
