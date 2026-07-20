@@ -1,6 +1,6 @@
 # Projects
 
-**Last updated:** 2026-07-19
+**Last updated:** 2026-07-20
 
 This is the only canonical project index for the Ideas Hub.
 
@@ -15,7 +15,7 @@ This is the only canonical project index for the Ideas Hub.
 | [Ideas Hub](projects/ideas.md) | Markdown-first brainstorming workspace and durable cross-tool reference layer | https://github.com/kofiarhin/ideas | — | This repository |
 | [Context API](projects/context-api.md) | Centralized API for structured, reusable user, engineering, project, workflow, glossary, and learning context | https://github.com/kofiarhin/context-api | — | Active; MVP PRD added; implementation foundation is next |
 | [Codex Workflow Kit](projects/codex-workflow.md) | Reusable AI engineering workflow system | https://github.com/kofiarhin/codex-workflow-kit | — | Supports Codex, Claude Code, Cursor, and similar agents |
-| [Agent System](projects/agent-system.md) | Runtime-agnostic agent instruction system with deterministic generation and native runtime outputs | https://github.com/kofiarhin/agent-system | — | Active; v1.0.1 MVP safety hardening approved and ready |
+| [Agent System](projects/agent-system.md) | Runtime-agnostic agent instruction system with deterministic generation and native runtime outputs | https://github.com/kofiarhin/agent-system | — | Active; streamlined setup/sync implemented and user-verified; CI/release evidence next |
 | [Archon](projects/archon.md) | AI-powered software architecture studio that turns ideas into implementation-ready engineering blueprints | https://github.com/kofiarhin/archon | — | Active; MVP specification approved; Phase 1 foundation is next |
 | [Taxify](projects/taxify.md) | Project details not yet documented | https://github.com/kofiarhin/taxify | — | Needs overview and current status |
 | [Kflix](projects/kflix.md) | Project details not yet documented | https://github.com/kofiarhin/kflix | — | Needs overview and current status |
