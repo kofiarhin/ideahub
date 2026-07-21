@@ -18,6 +18,8 @@
 - PRD: https://github.com/kofiarhin/context-api/blob/main/docs/PRD.md
 - Specification: https://github.com/kofiarhin/context-api/blob/main/docs/SPEC.md
 - Public CRUD implementation: https://github.com/kofiarhin/context-api/commit/9f76f11356a80cd92e5f853e148df7f23b0c9340
+- Forge: [forge.md](forge.md)
+- Zoro: [zoro.md](zoro.md)
 
 ## Current State
 
@@ -33,13 +35,16 @@
 - Zoro successfully invoked the live `listProjects` action and retrieved current project data from the Context API.
 - Zoro generated a ProjectOS report from live API data, clearly separating stored facts from inferred project-management observations and making no persistent changes without approval.
 - The GPT Action currently exposes health, profile, project, and task operations, staying within the GPT Action operation limit.
-- Full end-to-end write verification through Zoro is still pending for create, patch, and archive operations.
+- End-to-end project CRUD through Zoro has been verified against the deployed API: create, retrieve, patch, archive, and archived-state retrieval succeeded.
+- Verification confirmed that project creation persisted, patching changed the requested fields while preserving `createdAt`, and soft deletion produced an archived record.
+- The original action schema was corrected to remove unsupported project fields and stay within the GPT Builder operation limit.
 - Jest and Supertest CRUD coverage was added for every domain. Syntax, lint, formatting, model validation, and mocked service verification passed locally.
 - The complete MongoDB-backed integration suite still needs an environment run because the local verifier could not download the MongoDB test binary due DNS resolution failure.
+- Context API is now an approved infrastructure component of **Forge**, serving as its shared organizational memory and system of record.
 
 ## Current Focus
 
-Verify Zoro's project and task write operations against the deployed API, including create, update, soft delete, archived lookup, and refreshed collection reads.
+Support creation of the Forge and Zoro project records, define the data model needed for Forge modules, relationships, approvals, task states, and evidence, and preserve clear authority between Context API records, repository-local specifications, and Ideas Hub narrative context.
 
 ## Brainstorming
 
@@ -50,6 +55,7 @@ Verify Zoro's project and task write operations against the deployed API, includ
 - Context versioning and rollback
 - Multi-user and project-scoped context
 - Expand Zoro with additional Actions for coding conventions, instruction sets, glossary entries, Ideas Hub context, and learnings
+- Forge-specific entities or schemas for agent roles, workflow evidence, approvals, relationships, and task ownership
 
 ## Decisions
 
@@ -66,6 +72,8 @@ Verify Zoro's project and task write operations against the deployed API, includ
 - Zoro must retrieve Context API data before making project recommendations and must ask for approval before persistent writes.
 - The GPT Action OpenAPI schema contains only health, profile, project, and task routes for the initial project-management integration.
 - Jest and Supertest are the backend verification tools.
+- Context API is Forge's shared memory and system of record but remains an independently maintained infrastructure project.
+- Verified repository state and approved repository-local specifications take precedence when Context API records are stale or conflicting.
 
 ## Assumptions
 
@@ -73,6 +81,7 @@ Verify Zoro's project and task write operations against the deployed API, includ
 - Clients benefit from retrieving and updating targeted context rather than loading the complete context set.
 - Rate limiting, payload limits, explicit serializers, and schema validation provide basic operational guardrails but are not substitutes for authentication.
 - The current Heroku deployment URL may change and should remain configuration-specific rather than becoming a reusable Agent System default.
+- Existing project and task entities may be sufficient for the first Forge setup, but dedicated evidence or relationship structures may still be required.
 
 ## Open Questions
 
@@ -81,13 +90,15 @@ Verify Zoro's project and task write operations against the deployed API, includ
 - What approval workflow should govern promotion of observations into durable learnings?
 - What precedence rules should apply when project-specific conventions conflict with global conventions?
 - Should the OpenAPI schema be hosted by the Context API so GPT Actions can import and refresh it from a stable URL?
+- Which Context API entities should represent Forge modules, authority boundaries, project relationships, evidence, and task locks?
 
 ## Next Actions
 
-- Use Zoro to archive the existing test project, then retrieve the default project collection and confirm the archived project is absent.
-- Retrieve archived projects and confirm the soft-deleted test project remains available.
-- Verify project creation and patch operations through Zoro.
-- Verify task creation, retrieval, patch, and archive operations through Zoro.
+- Create and verify the Forge and Zoro project records through Zoro.
+- Link Context API to Forge as shared memory and system of record.
+- Define the Forge Context API data model and identify any required entity or schema changes.
+- Define valid task transitions, single-owner enforcement, approval gates, and evidence schemas.
+- Verify task creation, retrieval, patch, and archive operations through Zoro if not already covered by the first Forge setup.
 - Run the complete Jest/Supertest suite in an environment with a working MongoDB test binary.
 - Add authentication before storing private or sensitive records.
 - Consider exposing a maintained OpenAPI document from the deployed API.
