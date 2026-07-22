@@ -33,6 +33,17 @@
 - No controlled live repository write/delete smoke test has been completed through Zoro.
 - Zoro's GitHub capability remains incomplete until repository verification, deployment confirmation, GPT Builder setup, and end-to-end evidence pass.
 
+## Accomplished
+
+- Completed the repository-side GitHub Gateway remediation required for Zoro.
+- Corrected the maintained Action schema to target the production Context API deployment.
+- Added release validation and an aggregate verification command for the backend repository.
+- Corrected the rate-limit regression assertion to match the configured standard headers.
+- Added optional repository allowlist enforcement, automated coverage, and configuration documentation without reducing the approved default capability.
+- Added a controlled release and smoke-test checklist for GPT Builder setup, repository reads, disposable writes, SHA-based deletion, cleanup, and evidence capture.
+- Preserved Zoro's approved GitHub safety boundaries, including branch protection, non-force branch updates, optimistic concurrency, and workflow-file write blocking.
+- Updated durable project context so completed repository work is separated from the remaining manual and live-verification steps.
+
 ## Current Focus
 
 Obtain green repository verification and deployment evidence, then complete the private GPT Builder configuration and verify safe reads plus a disposable-branch file create/delete sequence through a fresh Zoro conversation.
