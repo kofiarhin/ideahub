@@ -55,11 +55,13 @@
 - Claude Code reported a successful Heroku deployment, healthy replacement dynos, authenticated GitHub App access, and a live repository-list read returning three repositories. This deployment/read evidence has not yet been independently reproduced through Zoro.
 - No controlled live file-write/delete smoke test has been completed, and the GPT Builder Action has not yet been updated with the new schema and bearer credential.
 - Claude reported five pre-existing test failures unrelated to the gateway, involving an `express-rate-limit` header rename and seed-data drift. These remain unresolved and should not be silently treated as passing verification.
-- The backend gateway is implemented, but the end-to-end Zoro GitHub feature is not complete until the Action configuration and controlled write verification succeed.
+- A code audit rated the backend implementation and approved security controls as a conditional pass, but found that repository verification, Zoro Action integration, and end-to-end completion are still outstanding.
+- GitHub routes bypass the MongoDB request guard, but process startup still requires a successful MongoDB connection; the gateway is route-level independent from MongoDB, not process-level independent.
+- The backend gateway is implemented, but the end-to-end Zoro GitHub feature is not complete until the Action configuration, green verification evidence, and controlled write verification succeed.
 
 ## Current Focus
 
-Complete the manual Zoro Action integration and controlled end-to-end verification: correct the production server URL in the maintained schema, configure GPT Builder bearer authentication, then verify repository reads and a disposable branch file create/delete sequence through a fresh Zoro conversation.
+Close the remaining audit tasks in dependency order: correct the maintained Action schema, establish green repository verification, configure the live GPT Action, run controlled read/write smoke tests through Zoro, and record completion evidence.
 
 ## Brainstorming
 
@@ -71,6 +73,8 @@ Complete the manual Zoro Action integration and controlled end-to-end verificati
 - Multi-user and project-scoped context
 - Expand Zoro with additional Actions for coding conventions, instruction sets, glossary entries, Ideas Hub context, and learnings
 - Forge-specific entities or schemas for agent roles, workflow evidence, approvals, relationships, and task ownership
+- Add repository allowlists or per-project GitHub policies to reduce the blast radius of the current all-repository installation scope
+- Consider process-level separation for the GitHub Gateway if repository access must remain available during MongoDB startup outages
 
 ## Decisions
 
@@ -114,13 +118,20 @@ Complete the manual Zoro Action integration and controlled end-to-end verificati
 - Should the maintained OpenAPI schema be hosted by the Context API so GPT Actions can import and refresh it from a stable URL?
 - Which Context API entities should represent Forge modules, authority boundaries, project relationships, evidence, and task locks?
 - Should the five pre-existing test failures be repaired before the GitHub Gateway is declared fully verified?
+- Is route-level MongoDB independence sufficient, or should the GitHub Gateway remain available when MongoDB prevents process startup?
 
 ## Next Actions
 
-- **Next actionable task:** update `docs/openapi/zoro-action.yaml` to use `https://context-api-3b9dfadf403e.herokuapp.com`, paste the complete schema into Zoro's GPT Action, configure the bearer API key, start a fresh Zoro chat, and run the documented read plus disposable-branch file create/delete smoke test.
-- Record the exact Zoro smoke-test evidence, including repository listing, file read, branch creation, file creation, current blob SHA retrieval, and deletion.
-- After the controlled smoke test passes, update Ideas Hub to mark the GitHub Gateway available through Zoro and remove the remaining integration blocker.
-- Decide whether to fix the five pre-existing test failures immediately or track them as separate verified maintenance work.
-- Create and verify the Forge and Zoro project records through Zoro.
-- Define the Forge Context API data model, valid task transitions, single-owner enforcement, approval gates, and evidence schemas.
-- Run the complete MongoDB-backed integration suite in an environment with a working MongoDB test binary.
+### GitHub Gateway Audit Tasks
+
+- [ ] **Task 1 — Correct the maintained Action schema (`ready`):** replace `https://context-api.herokuapp.com` in `docs/openapi/zoro-action.yaml` with `https://context-api-3b9dfadf403e.herokuapp.com`, validate the OpenAPI document, and commit the correction.
+- [ ] **Task 2 — Establish repository verification evidence (`ready`):** run `npm test`, `npm run lint`, and `npm run format:check`; repair the five reported failures or document and isolate them through an explicitly approved separate maintenance task. Do not mark the gateway fully verified while the complete suite is red.
+- [ ] **Task 3 — Configure the live Zoro Action (`ready`):** paste the corrected 27-operation schema into GPT Builder, configure `ZORO_GITHUB_API_KEY` as Bearer authentication without exposing it, save the GPT, and start a fresh conversation.
+- [ ] **Task 4 — Verify non-destructive reads through Zoro (`ready`):** list available repositories and read `README.md` from `kofiarhin/context-api` on `main`; preserve the returned evidence and correlation IDs where available.
+- [ ] **Task 5 — Run the controlled write smoke test (`ready`):** create a disposable branch, create a temporary UTF-8 file, read its current blob SHA, delete it using that SHA, and confirm the target default branch was not modified.
+- [ ] **Task 6 — Record completion evidence (`ready`):** capture the corrected schema commit, verification command results, Heroku release, Zoro read evidence, branch/file create evidence, SHA-based deletion evidence, and final cleanup; only then mark the feature available through Zoro.
+- [ ] **Task 7 — Decide MongoDB availability requirements (`needs_approval`):** decide whether route-level independence is sufficient or whether the GitHub Gateway must run when MongoDB prevents Context API startup.
+- [ ] **Task 8 — Plan repository-scope hardening (`proposed`):** evaluate repository allowlists or per-project policies to reduce the impact of a compromised bearer credential while retaining the approved all-repository capability where required.
+- [ ] Create and verify the Forge and Zoro project records through Zoro.
+- [ ] Define the Forge Context API data model, valid task transitions, single-owner enforcement, approval gates, and evidence schemas.
+- [ ] Run the complete MongoDB-backed integration suite in an environment with a working MongoDB test binary.
