@@ -46,7 +46,7 @@ Default engineering preferences unless a project says otherwise:
 - **Agent System** — an active runtime-agnostic agent instruction system; setup and synchronization are implemented and user-verified across Codex, Claude Code, and Gemini CLI, with Windows CI, compatibility evidence, and release tagging next.
 - **Ideas Hub** — this repository; the shared reference and brainstorming layer across tools.
 - **Architect Command System** — Ideas Hub-backed workflows for portfolio auditing, durable task queues, approval-aware execution, verification, reporting, and context maintenance.
-- **Archon** — an active AI-powered software architecture studio with strong approved MVP specifications; it remains specification-first and Phase 1 application implementation has not started.
+- **Archon** — a paused AI-powered software architecture studio with approved MVP specifications; Phase 1 implementation has not started and no work should resume until explicit reactivation.
 
 ### Learning and mentorship
 
@@ -80,14 +80,13 @@ Default engineering preferences unless a project says otherwise:
 2. Implement and verify that Forge slice without implying the full multi-agent organization exists.
 3. Complete repository and live verification evidence for Context API, Brain, and Agent System.
 4. Reconcile Codex Workflow Kit legacy documentation with its current run-scoped artifact model.
-5. Begin Archon Phase 1 only through its approved implementation plan and verification gates.
 
 ## Workspace Gaps
 
 - Forge has strong initial product documentation but no executable orchestration foundation, tests, CI, API, persistence model, or deployment evidence.
 - Context API, Brain, and Agent System need durable verification evidence tied to exact revisions and environments.
 - Codex Workflow Kit contains legacy architecture guidance that conflicts with its current `_workflow/runs/<run-id>/` model.
-- Archon has strong specifications but no verified application implementation.
+- Archon is paused with strong specifications but no verified application implementation.
 - Several projects still need a clear purpose, lifecycle status, current focus, and next actions.
 - The inbox will need occasional review so useful ideas move into durable project notes.
 - Architect audits depend on project records linking to current authoritative PRDs, specifications, plans, repositories, implementation revisions, and verification evidence.
