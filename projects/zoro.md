@@ -34,11 +34,12 @@
 - The maintained Action schema still uses the placeholder server URL `https://context-api.herokuapp.com` instead of the actual Heroku URL.
 - The new schema and bearer authentication have not yet been configured in GPT Builder, so Zoro cannot yet invoke the GitHub Gateway through its live Action.
 - No controlled live write/delete smoke test has been completed through Zoro.
-- The backend implementation is substantially complete, but the user-facing Zoro GitHub capability remains incomplete until manual Action setup and end-to-end verification pass.
+- A code audit rated the backend and approved security controls as a conditional pass, but found that the live Action configuration, green repository verification, and end-to-end Zoro evidence are still missing.
+- The backend implementation is substantially complete, but the user-facing Zoro GitHub capability remains incomplete until the remaining tasks pass.
 
 ## Current Focus
 
-Complete the manual GPT Builder integration and controlled verification: correct the Action schema server URL, configure the bearer key, start a fresh Zoro conversation, verify repository listing and file reads, then create and delete a disposable file on a temporary branch.
+Complete the remaining integration and verification tasks in order: correct the maintained schema, establish green repository verification, configure GPT Builder, test reads, run a disposable branch write/delete sequence, and record the evidence.
 
 ## Brainstorming
 
@@ -82,10 +83,15 @@ Complete the manual GPT Builder integration and controlled verification: correct
 
 ## Next Actions
 
-- **Next actionable task:** change the server URL in `docs/openapi/zoro-action.yaml` to `https://context-api-3b9dfadf403e.herokuapp.com`, paste the complete schema into Zoro's GPT Action, configure the `ZORO_GITHUB_API_KEY` as Bearer authentication, save the GPT, and start a fresh conversation.
-- Verify a non-destructive repository listing and `README.md` read through Zoro.
-- Run a controlled write smoke test on a disposable branch: create a temporary UTF-8 file, retrieve its blob SHA, delete it using that SHA, and preserve the resulting evidence.
-- After the smoke test passes, update Ideas Hub to mark Zoro's GitHub repository access as available and verified.
-- Create and verify the Zoro project record in the Context API.
-- Link Zoro to Forge as Chief Orchestrator.
-- Finalize Zoro's Forge orchestration instructions, status transitions, approval rules, structured handoffs, and evidence records.
+### Zoro GitHub Completion Tasks
+
+- [ ] **Task 1 — Correct and validate the Action schema (`ready`):** replace the placeholder server URL with `https://context-api-3b9dfadf403e.herokuapp.com`, validate the 27-operation schema, and use the corrected committed version as the GPT Builder source.
+- [ ] **Task 2 — Confirm backend verification (`ready`):** obtain passing `npm test`, `npm run lint`, and `npm run format:check` evidence, or explicitly separate the five unrelated failures into approved maintenance work before claiming full verification.
+- [ ] **Task 3 — Configure GPT Builder (`ready`):** paste the corrected schema into Zoro's Action, configure `ZORO_GITHUB_API_KEY` as Bearer authentication without exposing the value, save the GPT, and open a fresh conversation.
+- [ ] **Task 4 — Verify GitHub reads through Zoro (`ready`):** list repositories and read `README.md` from `kofiarhin/context-api` on `main`; retain the response evidence.
+- [ ] **Task 5 — Verify GitHub writes through Zoro (`ready`):** create a disposable branch, create a temporary UTF-8 file, retrieve the current blob SHA, delete the file with that SHA, and verify `main` was not modified.
+- [ ] **Task 6 — Close the delivery (`ready`):** record the schema commit, verification output, Heroku release evidence, read test, write/delete test, and cleanup; then update Ideas Hub to mark Zoro's GitHub access available and verified.
+- [ ] **Task 7 — Review future access hardening (`proposed`):** consider per-repository policies or allowlists for projects that should not inherit the full all-repository capability.
+- [ ] Create and verify the Zoro project record in the Context API.
+- [ ] Link Zoro to Forge as Chief Orchestrator.
+- [ ] Finalize Zoro's Forge orchestration instructions, status transitions, approval rules, structured handoffs, and evidence records.
