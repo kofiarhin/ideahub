@@ -4,7 +4,7 @@
 
 ## Snapshot
 
-- **Lifecycle:** Active
+- **Lifecycle:** Paused
 - **Product:** AI-powered software architecture studio
 - **Tagline:** From idea to architecture.
 - **Current phase:** Approved MVP specification; implementation has not started
@@ -36,17 +36,11 @@ The approved MVP direction includes:
 
 The 2026-07-22 codebase audit confirmed that Archon remains a specification-first repository. Its documentation is strong and internally structured, but no runnable application, manifest-backed runtime, database migration, API implementation, worker, test execution, deployment, or production behavior has been verified.
 
+Work is paused by user decision. The approved specifications remain authoritative, but no Phase 1 implementation or verification work should begin until the project is explicitly reactivated.
+
 ## Current Focus
 
-Begin Phase 1 foundation work from the approved implementation plan:
-
-1. initialize the pnpm workspace and application boundaries
-2. establish formatting, linting, type-checking, tests, build, and CI
-3. add validated runtime configuration
-4. add local PostgreSQL and Redis through Docker Compose
-5. establish the initial database and migration foundation
-
-Implementation must follow the approved specifications and remain isolated in reviewable branches and pull requests.
+None. Project work is paused.
 
 ## Brainstorming
 
@@ -55,6 +49,7 @@ Implementation must follow the approved specifications and remain isolated in re
 
 ## Decisions
 
+- Pause Archon work until explicitly reactivated.
 - The MVP produces architecture and delivery artifacts rather than complete production applications.
 - A modular monolith plus a separate background worker is the approved initial architecture.
 - Generated content remains distinct from user-approved decisions.
@@ -80,8 +75,5 @@ Implementation must follow the approved specifications and remain isolated in re
 
 ## Next Actions
 
-1. Create and approve the first Phase 1 implementation task from `docs/specs/IMPLEMENTATION_PLAN.md`.
-2. Implement the repository and CI foundation in a dedicated branch and pull request.
-3. Verify clean installation, local web and worker startup, safe configuration failure, and required CI checks.
-4. Record the implementation revision and requirement-to-test evidence after verification.
-5. Update this project record only after the implementation work is verified and merged.
+- None while paused.
+- On reactivation, revalidate the repository state and approved specifications before creating the first Phase 1 implementation task.
