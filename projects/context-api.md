@@ -39,6 +39,17 @@
 - Repository changes are committed, but no green execution output for `npm run verify` has been recorded through the available GitHub connector. The feature must not be marked fully verified until those commands run successfully.
 - The GPT Builder Action and final Zoro read/write smoke test remain manual work and have not been completed.
 
+## Accomplished
+
+- Corrected the production server URL in the maintained Zoro Action schema.
+- Added deterministic release validation and the aggregate `npm run verify` command.
+- Corrected the draft-7 rate-limit header regression assertion.
+- Implemented optional repository allowlist enforcement with case-insensitive matching, tests, and example configuration.
+- Added a GitHub Gateway release checklist covering verification, deployment, GPT Builder configuration, safe reads, disposable writes, cleanup, and evidence capture.
+- Preserved the approved security controls: Bearer authentication, optimistic concurrency, non-force updates, branch-protection enforcement, and blocked workflow-file writes.
+- Documented the MongoDB startup dependency without expanding scope into a process-architecture redesign.
+- Updated the Ideas Hub records to distinguish completed repository remediation from outstanding live verification.
+
 ## Current Focus
 
 Run the complete repository verification command from a clean checkout, resolve any remaining seed-data failures, deploy the verified revision, then complete GPT Builder configuration and the controlled Zoro smoke test.
