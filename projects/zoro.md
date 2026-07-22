@@ -28,11 +28,13 @@
 - A dedicated GitHub App for Zoro has been created and installed with access to all repositories. Its approved permissions are metadata read, contents read/write, and pull requests read/write.
 - The GitHub App credentials are stored in the Heroku configuration for the `context-api` application. Secret values and private key material are intentionally excluded from Ideas Hub.
 - The GitHub Gateway scope, endpoint contract, access boundaries, security controls, and implementation sequence are approved and committed to the Context API repository.
-- As of 2026-07-22, the runtime GitHub Gateway is not committed, deployed, or exposed through Zoro's Action. Zoro therefore cannot yet perform GitHub repository operations through Context API.
+- Claude Code is currently implementing the approved GitHub Gateway in the local `context-api` repository. This active implementation session is still in progress and is not evidence that the feature is complete.
+- No final Claude completion report, verified runtime commit, successful Heroku release, updated live Action schema, or end-to-end Zoro GitHub verification has been recorded yet.
+- As of 2026-07-22, Zoro cannot yet be treated as having GitHub repository access through Context API.
 
 ## Current Focus
 
-Complete, verify, and deploy the authenticated GitHub Gateway in Context API, then update Zoro's Action schema so it can perform the approved repository code and pull-request operations.
+Allow Claude Code to finish the implementation, review and verify the resulting work, deploy the authenticated GitHub Gateway, and then update Zoro's Action schema with the confirmed live operations.
 
 ## Brainstorming
 
@@ -74,7 +76,8 @@ Complete, verify, and deploy the authenticated GitHub Gateway in Context API, th
 
 ## Next Actions
 
-- Complete the Context API GitHub Gateway implementation against the approved specification and plan.
+- Wait for Claude Code to finish and provide its complete implementation and verification report.
+- Review the resulting Context API working tree and commits against the approved GitHub Gateway specification and plan.
 - Verify the implementation with Jest, Supertest, linting, formatting, and regression coverage.
 - Deploy the verified Context API revision to Heroku and run safe read and controlled write smoke tests.
 - Save and validate the maintained OpenAPI 3.1 schema, then update Zoro's GPT Action with all deployed GitHub operations.
