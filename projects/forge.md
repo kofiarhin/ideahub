@@ -1,19 +1,22 @@
 # Forge
 
-**Last updated:** 2026-07-21
+**Last updated:** 2026-07-22
 
 ## Snapshot
 
 - **Lifecycle:** Active
 - **Summary:** AI-powered software organization that coordinates specialist agents to move software from idea through implementation, verification, release preparation, and launch.
-- **Repository:** Not created
+- **Repository:** https://github.com/kofiarhin/forge
 - **Owner:** Kofi Arhin
 
 ## Links
 
+- Repository: https://github.com/kofiarhin/forge
+- Product requirements: https://github.com/kofiarhin/forge/blob/main/docs/PRD.md
+- Technical specification: https://github.com/kofiarhin/forge/blob/main/docs/TECHNICAL_SPEC.md
+- Codebase audit: https://github.com/kofiarhin/forge/blob/main/docs/CODEBASE_AUDIT.md
 - Context API: [context-api.md](context-api.md)
 - Zoro: [zoro.md](zoro.md)
-- MVP PRD: Drafted in the approved project discussion; repository-local document not created yet
 
 ## Current State
 
@@ -22,13 +25,14 @@
 - The Context API is the shared organizational memory and system of record used by Forge agents.
 - The approved MVP organization includes Zoro, Architect, Builder, Reviewer, QA, Legal, Marketing, and SEO.
 - Architect, Builder, Reviewer, QA, Legal, Marketing, and SEO begin as Forge modules rather than separate top-level projects.
-- A draft MVP PRD has been produced covering the organization, lifecycle, agent responsibilities, authority boundaries, evidence requirements, failure behavior, and MVP edge cases.
-- A copy-and-paste Zoro setup prompt has been prepared to create Forge, create or link Zoro, link Context API, create module records and documentation, and establish the initial backlog through the Context API.
-- Zoro completed a preflight check against the Context API: Forge did not exist, Context API existed, and no existing Zoro project record was found. No write operations had been performed at that checkpoint.
+- A Forge repository now exists on `main` with an improved README, a repository-local PRD, a proposed technical specification, and a codebase audit.
+- The audit found no executable application, package manifest, tests, API contract, CI workflow, deployment configuration, data model, or runtime entry point before the documentation work.
+- Forge is therefore a documented product and architecture scaffold, not an implemented orchestration system.
+- Proposed components, integrations, security controls, agent execution, state transitions, and deployment behavior must not be described as implemented until repository evidence and verification exist.
 
 ## Current Focus
 
-Establish Forge as a durable project in the Context API, create the Zoro project record, link Context API and Zoro to Forge, create the MVP module records and documentation, and define the initial governed backlog without beginning implementation.
+Approve the smallest executable Forge MVP slice and its authority boundaries before beginning implementation. The first slice should establish deterministic task state, one-repository coordination, isolated GitHub interaction, evidence capture, and verification without attempting the full multi-agent organization.
 
 ## Brainstorming
 
@@ -53,6 +57,7 @@ Establish Forge as a durable project in the Context API, create the Zoro project
 - A required-stage failure stops downstream execution and results in a `blocked` or `failed` state.
 - Marketing and SEO may reference only QA-verified and released features.
 - Human approval remains mandatory for implementation and other material or sensitive decisions.
+- Repository documentation must distinguish proposed architecture from verified implementation.
 
 ## Assumptions
 
@@ -62,18 +67,18 @@ Establish Forge as a durable project in the Context API, create the Zoro project
 
 ## Open Questions
 
+- Which document is the final approved implementation authority for the first executable slice?
 - Which Context API entities should hold Forge modules, documentation, evidence, relationships, and agent authority rules?
-- Should Forge receive its own repository now or only after the MVP specification is approved?
 - How should Context API and Ideas Hub synchronization avoid competing sources of truth?
 - Which runtime will execute specialist agents during the first end-to-end demonstration?
 - What constitutes a formal release event for the Marketing and SEO gates in the MVP?
+- What credential scope, approval model, concurrency policy, recovery behavior, and audit-storage contract will govern execution?
 
 ## Next Actions
 
-- Complete and verify creation of the Forge and Zoro project records in the Context API.
-- Link the existing Context API project to Forge as shared memory and system of record.
-- Create the Forge module records and operating documentation.
-- Finalize and approve the Forge MVP PRD.
-- Define the Context API data model, task transitions, evidence schema, and agent authority boundaries.
-- Keep implementation tasks out of `ready` until approved specifications and acceptance criteria exist.
-- Design the first end-to-end Forge demonstration after the foundation is approved.
+1. Review and approve the repository-local PRD and proposed technical specification as implementation authority, or record required changes.
+2. Define the minimum executable slice, acceptance criteria, task state transitions, evidence schema, and agent authority boundaries.
+3. Create implementation work only after the slice is approved and marked `ready`.
+4. Build a small executable foundation with deterministic state transitions, isolated GitHub integration, and automated tests.
+5. Verify the first end-to-end demonstration and reconcile the repository documentation and this project record against the verified revision.
+6. Complete and verify the Forge and Zoro project records and relationships in Context API.
