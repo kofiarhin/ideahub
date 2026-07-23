@@ -25,11 +25,19 @@ This is the only canonical project index for the Ideas Hub.
 | [MoggOff](projects/moggoff.md) | Project details not yet documented | https://github.com/kofiarhin/moggedoff | — | Repository slug differs from project display name |
 | [ProjectOS](projects/projectos.md) | Archived autonomous development operating system for multi-repository local workspaces | https://github.com/kofiarhin/projectos | — | Archived; fresh security and repository review required before reactivation |
 | [Agency Landing Page](projects/agency-landing-page.md) | Repository-backed project; purpose and scope not yet documented | https://github.com/kofiarhin/agency-landing-page | — | Dedicated project record added 2026-07-23 |
-| [Repository Project Catalog](projects/repository-catalog.md) | Approved inventory of 194 additional repository-backed projects | — | — | Repository existence verified; lifecycle, priority, stack, and scope remain undocumented |
+| [Agenda Boys](projects/agenda-boys.md) | Repository-backed project; purpose and scope not yet documented | https://github.com/kofiarhin/agenda-boys | — | Dedicated project record added 2026-07-23 |
+| [Repository Project Catalog](projects/repository-catalog.md) | Approved inventory of 193 repository-backed projects not previously represented by dedicated records | — | — | Repository existence verified; lifecycle, priority, stack, and scope remain undocumented |
 
-## Repository Catalog Scope
+## Repository Coverage
 
-The [Repository Project Catalog](projects/repository-catalog.md) records 194 additional GitHub repositories approved by Kofi for Ideas Hub tracking on 2026-07-23. These entries are recorded without inferred lifecycle, priority, stack, live URL, or project purpose. Repositories requiring active project management should be promoted into dedicated `projects/<slug>.md` records after their details are confirmed.
+All 212 repositories accessible through the installed GitHub App are now represented in Ideas Hub without removing any existing project:
+
+- Existing dedicated project records were preserved.
+- `kofiarhin/zoro` was linked to the existing Zoro project.
+- Agency Landing Page and Agenda Boys have dedicated project files.
+- The [Repository Project Catalog](projects/repository-catalog.md) records the remaining imported repositories. Agenda Boys remains listed in the catalog as part of the original import inventory as well as having a dedicated record.
+
+Catalog entries are recorded without inferred lifecycle, priority, stack, live URL, or project purpose. Repositories requiring active project management should be promoted into dedicated `projects/<slug>.md` records after their details are confirmed.
 
 ## Lifecycle Guidance
 
