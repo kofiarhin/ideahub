@@ -1,0 +1,217 @@
+# Repository Project Catalog
+
+**Last updated:** 2026-07-23
+
+This catalog tracks repositories explicitly approved by Kofi for inclusion in Ideas Hub on 2026-07-23. Purpose, lifecycle, stack, live URL, and current focus remain `Not documented` until verified.
+
+## Repository-backed projects
+
+- https://github.com/kofiarhin/agenda-boys
+- https://github.com/kofiarhin/ai-coding-agent
+- https://github.com/kofiarhin/ajax-form-validation
+- https://github.com/kofiarhin/angular-todo-app
+- https://github.com/kofiarhin/aos
+- https://github.com/kofiarhin/auto_delux
+- https://github.com/kofiarhin/bizz-finder
+- https://github.com/kofiarhin/black-start-daily
+- https://github.com/kofiarhin/blogapi
+- https://github.com/kofiarhin/boilerplate
+- https://github.com/kofiarhin/bourbon-and-blade
+- https://github.com/kofiarhin/budget_application
+- https://github.com/kofiarhin/caching-practice
+- https://github.com/kofiarhin/Chat-System
+- https://github.com/kofiarhin/clerk-docs
+- https://github.com/kofiarhin/clerk-fullstack
+- https://github.com/kofiarhin/cline
+- https://github.com/kofiarhin/codex-post-generator
+- https://github.com/kofiarhin/codex-setup
+- https://github.com/kofiarhin/coding-with-kofi
+- https://github.com/kofiarhin/color-palette-vault
+- https://github.com/kofiarhin/content-analyzer
+- https://github.com/kofiarhin/content-generator
+- https://github.com/kofiarhin/convex-clerk
+- https://github.com/kofiarhin/cosmic-query
+- https://github.com/kofiarhin/CougarFinder
+- https://github.com/kofiarhin/crypto-pulse-pro
+- https://github.com/kofiarhin/cup-pulse
+- https://github.com/kofiarhin/daily-mailer
+- https://github.com/kofiarhin/Data
+- https://github.com/kofiarhin/dating-app
+- https://github.com/kofiarhin/detention-desk
+- https://github.com/kofiarhin/digital-market-place
+- https://github.com/kofiarhin/doctor_appointment_system
+- https://github.com/kofiarhin/doctorappui
+- https://github.com/kofiarhin/email-sender
+- https://github.com/kofiarhin/employee_attendance
+- https://github.com/kofiarhin/escobook
+- https://github.com/kofiarhin/escoshop
+- https://github.com/kofiarhin/escovisualz
+- https://github.com/kofiarhin/escowear-fullstack-app
+- https://github.com/kofiarhin/express-ejs-live-reloader-starter
+- https://github.com/kofiarhin/feedhub
+- https://github.com/kofiarhin/flex-invoice
+- https://github.com/kofiarhin/food-delivery
+- https://github.com/kofiarhin/forkify
+- https://github.com/kofiarhin/friends-show-down
+- https://github.com/kofiarhin/fullstack-starter
+- https://github.com/kofiarhin/fullstack-template-projects
+- https://github.com/kofiarhin/funky-prices
+- https://github.com/kofiarhin/glowfix
+- https://github.com/kofiarhin/graphql-crash-course
+- https://github.com/kofiarhin/groq-appgen
+- https://github.com/kofiarhin/healsync-mern
+- https://github.com/kofiarhin/heroku-test
+- https://github.com/kofiarhin/homeconnect
+- https://github.com/kofiarhin/hotel_booking
+- https://github.com/kofiarhin/hyperframes-editor
+- https://github.com/kofiarhin/image-generator
+- https://github.com/kofiarhin/instagram-clone
+- https://github.com/kofiarhin/JavaScript-SpotifyAPI
+- https://github.com/kofiarhin/javascript-testing-finish
+- https://github.com/kofiarhin/joblisting
+- https://github.com/kofiarhin/js-chat-app
+- https://github.com/kofiarhin/js-dev-template
+- https://github.com/kofiarhin/js-doctor-on-demand
+- https://github.com/kofiarhin/js-shopping-cart
+- https://github.com/kofiarhin/js-theshops
+- https://github.com/kofiarhin/jsescowear
+- https://github.com/kofiarhin/jsStarterpack
+- https://github.com/kofiarhin/kf-ai-server
+- https://github.com/kofiarhin/kf-blog-api
+- https://github.com/kofiarhin/kf-chat-app
+- https://github.com/kofiarhin/kf-chat-app-practice
+- https://github.com/kofiarhin/kf-echo-chat-app
+- https://github.com/kofiarhin/kf-escosneakers
+- https://github.com/kofiarhin/kf-fullstack-ai-generator
+- https://github.com/kofiarhin/kf-fullstack-starter-pack
+- https://github.com/kofiarhin/kf-fullstack-test
+- https://github.com/kofiarhin/kf-graphql-blog-app
+- https://github.com/kofiarhin/kf-graphql-perfume-shop
+- https://github.com/kofiarhin/kf-graphql-shopping-cart
+- https://github.com/kofiarhin/kf-hotel-website
+- https://github.com/kofiarhin/kf-image-upload
+- https://github.com/kofiarhin/kf-layouts
+- https://github.com/kofiarhin/kf-messaging-app
+- https://github.com/kofiarhin/kf-model-management
+- https://github.com/kofiarhin/kf-money-transfer
+- https://github.com/kofiarhin/kf-node-ejs-user-managemant
+- https://github.com/kofiarhin/kf-notes-app
+- https://github.com/kofiarhin/kf-personal-website
+- https://github.com/kofiarhin/kf-react-starter-pack-v1
+- https://github.com/kofiarhin/kf-rf-rt-rd-blog-app
+- https://github.com/kofiarhin/kf-rt-alpha
+- https://github.com/kofiarhin/kf-rt-movie-app
+- https://github.com/kofiarhin/kf-rt-movie-app-update
+- https://github.com/kofiarhin/kf-rt-netflix-blog
+- https://github.com/kofiarhin/kf-rt-notes-app-fullstack
+- https://github.com/kofiarhin/kf-rt-reduxx-node-fullstack-auth
+- https://github.com/kofiarhin/kf-rt-test-vercel-vite
+- https://github.com/kofiarhin/kf-rt-typing-game
+- https://github.com/kofiarhin/kf-socketio-chat
+- https://github.com/kofiarhin/kf-test
+- https://github.com/kofiarhin/kf-web-server
+- https://github.com/kofiarhin/kf-yt-socket-io
+- https://github.com/kofiarhin/kfwebsite
+- https://github.com/kofiarhin/know-your-mps
+- https://github.com/kofiarhin/kofiarhin
+- https://github.com/kofiarhin/lake-island
+- https://github.com/kofiarhin/link-screen
+- https://github.com/kofiarhin/litvoice-reader
+- https://github.com/kofiarhin/Login-System-OOP
+- https://github.com/kofiarhin/loomio-marketplace
+- https://github.com/kofiarhin/luna-ninjas
+- https://github.com/kofiarhin/luxe-and-aura
+- https://github.com/kofiarhin/mcp-server-robbin
+- https://github.com/kofiarhin/MERN-Stack-Projects
+- https://github.com/kofiarhin/money-transfer
+- https://github.com/kofiarhin/movie-rental
+- https://github.com/kofiarhin/nba-application
+- https://github.com/kofiarhin/new_toolkit
+- https://github.com/kofiarhin/newletter
+- https://github.com/kofiarhin/node-fullstack-dev-template
+- https://github.com/kofiarhin/node-send-email
+- https://github.com/kofiarhin/node-testing-basics
+- https://github.com/kofiarhin/node_app_test
+- https://github.com/kofiarhin/node_auth
+- https://github.com/kofiarhin/node_practice
+- https://github.com/kofiarhin/notes
+- https://github.com/kofiarhin/payment-system
+- https://github.com/kofiarhin/personal-website
+- https://github.com/kofiarhin/personal-website-new
+- https://github.com/kofiarhin/personal-website-update
+- https://github.com/kofiarhin/personal_framework
+- https://github.com/kofiarhin/personal_framework_2.0
+- https://github.com/kofiarhin/php-address-book
+- https://github.com/kofiarhin/php-custom-gallery
+- https://github.com/kofiarhin/PHP-Login-System
+- https://github.com/kofiarhin/playground
+- https://github.com/kofiarhin/postcard
+- https://github.com/kofiarhin/pregchat
+- https://github.com/kofiarhin/prompt-bank
+- https://github.com/kofiarhin/prompt-hive
+- https://github.com/kofiarhin/react-course-part2-finish
+- https://github.com/kofiarhin/react-native-form-validation
+- https://github.com/kofiarhin/react-testing-finish
+- https://github.com/kofiarhin/receipt-tracker
+- https://github.com/kofiarhin/responsive-timeline
+- https://github.com/kofiarhin/restaurant
+- https://github.com/kofiarhin/rizz-app
+- https://github.com/kofiarhin/rn-imbd-clone
+- https://github.com/kofiarhin/rn-movies
+- https://github.com/kofiarhin/rn-sneaker-shop
+- https://github.com/kofiarhin/rn_address_book
+- https://github.com/kofiarhin/rn_restaurants_app
+- https://github.com/kofiarhin/rnecommerceui
+- https://github.com/kofiarhin/rnfitness
+- https://github.com/kofiarhin/rnloginsystem
+- https://github.com/kofiarhin/room-ledger
+- https://github.com/kofiarhin/rt-chuck-norris-jokes
+- https://github.com/kofiarhin/rt-escowear
+- https://github.com/kofiarhin/rt-movies-redux
+- https://github.com/kofiarhin/rt-netflix-clone
+- https://github.com/kofiarhin/rt-pagination
+- https://github.com/kofiarhin/rt-robohash
+- https://github.com/kofiarhin/rt-series-redux
+- https://github.com/kofiarhin/rt-sneaker-shop
+- https://github.com/kofiarhin/rt-twitter-clone
+- https://github.com/kofiarhin/script-reader
+- https://github.com/kofiarhin/select-flow
+- https://github.com/kofiarhin/shopping-cart
+- https://github.com/kofiarhin/shopping_cart
+- https://github.com/kofiarhin/simple-react-tales
+- https://github.com/kofiarhin/simplefolio
+- https://github.com/kofiarhin/snap-sell
+- https://github.com/kofiarhin/social_media
+- https://github.com/kofiarhin/socialmedia
+- https://github.com/kofiarhin/stripe-payment
+- https://github.com/kofiarhin/stripe_checkout_with_nodejs
+- https://github.com/kofiarhin/study-buddy
+- https://github.com/kofiarhin/tailorcv-app
+- https://github.com/kofiarhin/test-cline
+- https://github.com/kofiarhin/Tonaton-clone
+- https://github.com/kofiarhin/trading-bot
+- https://github.com/kofiarhin/Transparent-Login
+- https://github.com/kofiarhin/typing-arena
+- https://github.com/kofiarhin/typing-game
+- https://github.com/kofiarhin/video-editor
+- https://github.com/kofiarhin/vim-motion-game
+- https://github.com/kofiarhin/workarea
+- https://github.com/kofiarhin/youtube-analysis
+- https://github.com/kofiarhin/youtube-downloader
+- https://github.com/kofiarhin/yt-booking-app
+
+## Current State
+
+- Lifecycle: Not documented for all catalog entries
+- Current priority: Not documented
+- Verification: Repository existence was checked through the installed GitHub App before import
+
+## Decisions
+
+- Track all listed repositories in Ideas Hub, approved by Kofi on 2026-07-23.
+- Do not infer lifecycle, stack, priority, live URL, or scope from repository names.
+
+## Next Actions
+
+- Triage repositories into active work, maintenance, learning/reference, duplicate/superseded, or archived.
+- Promote repositories requiring detailed management into dedicated `projects/<slug>.md` records.
