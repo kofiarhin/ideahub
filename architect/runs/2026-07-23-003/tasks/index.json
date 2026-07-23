@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-07-23-003",
+  "authoritativePath": "architect/runs/2026-07-23-003/tasks.md",
+  "generatedAt": "2026-07-23T22:30:00Z",
+  "tasks": [
+    {
+      "taskId": "2026-07-23-003-ideas-T001",
+      "workKey": "ideahub:architect-zoro-loop-smoke-test",
+      "project": "Ideas Hub",
+      "repository": "kofiarhin/ideahub",
+      "status": "ready",
+      "priority": "normal",
+      "path": "architect/runs/2026-07-23-003/tasks/2026-07-23-003-ideas-T001.md"
+    }
+  ]
+}
