@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "PROJECTS.md + projects/*.md",
-  "projectsIndexUpdatedAt": "2026-07-22",
+  "projectsIndexUpdatedAt": "2026-07-23",
   "projects": [
     {
       "id": "piano360",
@@ -13,11 +13,11 @@
       "record": "projects/piano360.md",
       "lifecycle": "Active",
       "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "kofiarhin/piano360",
         "piano360"
       ],
-      "relatedProjects": [],
       "recordTitle": "Piano360",
       "lifecycleRaw": "Active"
     },
@@ -30,12 +30,12 @@
       "notes": "MongoDB is the durable application memory",
       "record": "projects/brain.md",
       "lifecycle": "Not documented",
-      "updatedAt": "2026-07-18",
+      "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "brain",
         "kofiarhin/brain"
       ],
-      "relatedProjects": [],
       "recordTitle": "Brain",
       "lifecycleRaw": "Not documented"
     },
@@ -49,11 +49,11 @@
       "record": "projects/karebraids.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "karebraids",
         "kofiarhin/karebraids"
       ],
-      "relatedProjects": [],
       "recordTitle": "KareBraids",
       "lifecycleRaw": "Not documented"
     },
@@ -67,11 +67,11 @@
       "record": "projects/amas-kitchen.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "amas kitchen",
         "kofiarhin/amas kitchen"
       ],
-      "relatedProjects": [],
       "recordTitle": "Amas Kitchen",
       "lifecycleRaw": "Not documented"
     },
@@ -85,11 +85,11 @@
       "record": "projects/devkofi.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "devkofi",
         "kofiarhin/devkofi"
       ],
-      "relatedProjects": [],
       "recordTitle": "DevKofi",
       "lifecycleRaw": "Not documented"
     },
@@ -103,12 +103,12 @@
       "record": "projects/memory-sequence-game.md",
       "lifecycle": "Exploring",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "kofiarhin/memory game",
         "memory game",
         "memory sequence game"
       ],
-      "relatedProjects": [],
       "recordTitle": "Memory Sequence Game",
       "lifecycleRaw": "Exploring"
     },
@@ -122,13 +122,13 @@
       "record": "projects/ideas.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "ideahub",
         "ideas",
         "ideas hub",
         "kofiarhin/ideahub"
       ],
-      "relatedProjects": [],
       "recordTitle": "Ideas Hub",
       "lifecycleRaw": "Not documented"
     },
@@ -136,18 +136,19 @@
       "id": "forge",
       "name": "Forge",
       "summary": "AI-powered software organization coordinating specialist agents from idea through verified launch preparation",
-      "repository": null,
+      "repository": "https://github.com/kofiarhin/forge",
       "liveUrl": null,
-      "notes": "Active; MVP operating model and edge-case rules defined; Context API setup next",
+      "notes": "Active; repository-local PRD/spec/audit added; executable MVP not implemented",
       "record": "projects/forge.md",
       "lifecycle": "Active",
-      "updatedAt": "2026-07-21",
-      "aliases": [
-        "forge"
-      ],
+      "updatedAt": "2026-07-22",
       "relatedProjects": [
         "context-api",
         "zoro"
+      ],
+      "aliases": [
+        "forge",
+        "kofiarhin/forge"
       ],
       "recordTitle": "Forge",
       "lifecycleRaw": "Active"
@@ -156,18 +157,19 @@
       "id": "zoro",
       "name": "Zoro",
       "summary": "Forge Chief Orchestrator and Context API-connected Custom GPT",
-      "repository": null,
+      "repository": "https://github.com/kofiarhin/zoro",
       "liveUrl": null,
-      "notes": "Active; project CRUD verified through OpenAI Actions; Forge linkage next",
+      "notes": "Active; repository linked on 2026-07-23; Forge linkage next",
       "record": "projects/zoro.md",
       "lifecycle": "Active",
-      "updatedAt": "2026-07-22",
-      "aliases": [
-        "zoro"
-      ],
+      "updatedAt": "2026-07-23",
       "relatedProjects": [
         "context-api",
         "forge"
+      ],
+      "aliases": [
+        "kofiarhin/zoro",
+        "zoro"
       ],
       "recordTitle": "Zoro",
       "lifecycleRaw": "Active"
@@ -178,17 +180,17 @@
       "summary": "Centralized API for structured, reusable user, engineering, project, workflow, glossary, and learning context",
       "repository": "https://github.com/kofiarhin/context-api",
       "liveUrl": "https://context-api-3b9dfadf403e.herokuapp.com",
-      "notes": "Active; public CRUD MVP and Zoro project CRUD verified; Forge data model next",
+      "notes": "Active; strong docs; repository and live gateway verification evidence next",
       "record": "projects/context-api.md",
       "lifecycle": "Active",
-      "updatedAt": "2026-07-22",
-      "aliases": [
-        "context api",
-        "kofiarhin/context api"
-      ],
+      "updatedAt": "2026-07-23",
       "relatedProjects": [
         "forge",
         "zoro"
+      ],
+      "aliases": [
+        "context api",
+        "kofiarhin/context api"
       ],
       "recordTitle": "Context API",
       "lifecycleRaw": "Active"
@@ -199,16 +201,16 @@
       "summary": "Reusable AI engineering workflow system",
       "repository": "https://github.com/kofiarhin/codex-workflow-kit",
       "liveUrl": null,
-      "notes": "Supports Codex, Claude Code, Cursor, and similar agents",
+      "notes": "PRD/spec/audit added; legacy artifact-path documentation needs reconciliation",
       "record": "projects/codex-workflow.md",
       "lifecycle": "Not documented",
-      "updatedAt": "2026-07-18",
+      "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "codex workflow",
         "codex workflow kit",
         "kofiarhin/codex workflow kit"
       ],
-      "relatedProjects": [],
       "recordTitle": "Codex Workflow Kit",
       "lifecycleRaw": "Not documented"
     },
@@ -218,15 +220,15 @@
       "summary": "Runtime-agnostic agent instruction system with deterministic generation and native runtime outputs",
       "repository": "https://github.com/kofiarhin/agent-system",
       "liveUrl": null,
-      "notes": "Active; streamlined setup/sync implemented and user-verified; CI/release evidence next",
+      "notes": "Active; streamlined setup/sync verified locally; CI/release evidence next",
       "record": "projects/agent-system.md",
       "lifecycle": "Active",
-      "updatedAt": "2026-07-20",
+      "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "agent system",
         "kofiarhin/agent system"
       ],
-      "relatedProjects": [],
       "recordTitle": "Agent System",
       "lifecycleRaw": "Active"
     },
@@ -236,17 +238,17 @@
       "summary": "AI-powered software architecture studio that turns ideas into implementation-ready engineering blueprints",
       "repository": "https://github.com/kofiarhin/archon",
       "liveUrl": null,
-      "notes": "Active; MVP specification approved; Phase 1 foundation is next",
+      "notes": "Paused; approved specifications retained; Phase 1 has not started",
       "record": "projects/archon.md",
-      "lifecycle": "Active",
-      "updatedAt": "2026-07-18",
+      "lifecycle": "Paused",
+      "updatedAt": "2026-07-22",
+      "relatedProjects": [],
       "aliases": [
         "archon",
         "kofiarhin/archon"
       ],
-      "relatedProjects": [],
       "recordTitle": "Archon",
-      "lifecycleRaw": "Active"
+      "lifecycleRaw": "Paused"
     },
     {
       "id": "taxify",
@@ -258,11 +260,11 @@
       "record": "projects/taxify.md",
       "lifecycle": "Archived",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "kofiarhin/taxify",
         "taxify"
       ],
-      "relatedProjects": [],
       "recordTitle": "Taxify",
       "lifecycleRaw": "Archived"
     },
@@ -276,11 +278,11 @@
       "record": "projects/kflix.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "kflix",
         "kofiarhin/kflix"
       ],
-      "relatedProjects": [],
       "recordTitle": "Kflix",
       "lifecycleRaw": "Not documented"
     },
@@ -294,11 +296,11 @@
       "record": "projects/banging-prices.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "banging prices",
         "kofiarhin/banging prices"
       ],
-      "relatedProjects": [],
       "recordTitle": "Banging Prices",
       "lifecycleRaw": "Not documented"
     },
@@ -312,12 +314,12 @@
       "record": "projects/moggoff.md",
       "lifecycle": "Not documented",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "kofiarhin/moggedoff",
         "moggedoff",
         "moggoff"
       ],
-      "relatedProjects": [],
       "recordTitle": "MoggOff",
       "lifecycleRaw": "Not documented"
     },
@@ -331,13 +333,67 @@
       "record": "projects/projectos.md",
       "lifecycle": "Archived",
       "updatedAt": "2026-07-18",
+      "relatedProjects": [],
       "aliases": [
         "kofiarhin/projectos",
         "projectos"
       ],
-      "relatedProjects": [],
       "recordTitle": "ProjectOS",
       "lifecycleRaw": "Archived"
+    },
+    {
+      "id": "agency-landing-page",
+      "name": "Agency Landing Page",
+      "summary": "Repository-backed project; purpose and scope not yet documented",
+      "repository": "https://github.com/kofiarhin/agency-landing-page",
+      "liveUrl": null,
+      "notes": "Dedicated project record added 2026-07-23",
+      "record": "projects/agency-landing-page.md",
+      "lifecycle": "Not documented",
+      "updatedAt": "2026-07-23",
+      "relatedProjects": [],
+      "aliases": [
+        "agency landing page",
+        "kofiarhin/agency landing page"
+      ],
+      "recordTitle": "Agency Landing Page",
+      "lifecycleRaw": "Not documented"
+    },
+    {
+      "id": "agenda-boys",
+      "name": "Agenda Boys",
+      "summary": "Repository-backed project; purpose and scope not yet documented",
+      "repository": "https://github.com/kofiarhin/agenda-boys",
+      "liveUrl": null,
+      "notes": "Dedicated project record added 2026-07-23",
+      "record": "projects/agenda-boys.md",
+      "lifecycle": "Not documented",
+      "updatedAt": "2026-07-23",
+      "relatedProjects": [],
+      "aliases": [
+        "agenda boys",
+        "kofiarhin/agenda boys"
+      ],
+      "recordTitle": "Agenda Boys",
+      "lifecycleRaw": "Not documented"
+    },
+    {
+      "id": "repository-catalog",
+      "name": "Repository Project Catalog",
+      "summary": "Approved inventory of 193 repository-backed projects not previously represented by dedicated records",
+      "repository": null,
+      "liveUrl": null,
+      "notes": "Repository existence verified; lifecycle, priority, stack, and scope remain undocumented",
+      "record": "projects/catalog/repository-catalog.md",
+      "lifecycle": "Not documented",
+      "updatedAt": "2026-07-23",
+      "relatedProjects": [],
+      "aliases": [
+        "repository catalog",
+        "repository project catalog"
+      ],
+      "recordTitle": "Repository Project Catalog",
+      "lifecycleRaw": "Not documented"
     }
   ]
 }
