@@ -9,7 +9,9 @@
     "hub:index": "node scripts/build-catalog.mjs",
     "hub:validate": "node scripts/validate-hub.mjs",
     "hub:drift": "node scripts/check-drift.mjs",
-    "hub:check": "npm run hub:validate && npm run hub:index -- --check && npm run hub:drift && npm test",
+    "hub:runtime:build": "node scripts/build-agent-runtime.mjs --write",
+    "hub:runtime:check": "node scripts/build-agent-runtime.mjs --check",
+    "hub:check": "npm run hub:validate && npm run hub:index -- --check && npm run hub:drift && npm run hub:runtime:check && npm test",
     "hub:update": "node scripts/update-project.mjs"
   },
   "engines": {
