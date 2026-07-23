@@ -6,13 +6,16 @@
 
 - **Lifecycle:** Active
 - **Summary:** Custom GPT and Forge Chief Orchestrator that coordinates governed software workflows using the Context API.
-- **Repository:** Not created
+- **Repository:** Uses Ideas Hub for its command center; no separate implementation repository
 - **Owner:** Kofi Arhin
 
 ## Links
 
 - Forge: [forge.md](forge.md)
 - Context API: [context-api.md](context-api.md)
+- Zoro command center: [../zoro/README.md](../zoro/README.md)
+- Canonical Zoro instructions: [../zoro/INSTRUCTIONS.md](../zoro/INSTRUCTIONS.md)
+- GPT Builder bootstrap: [../zoro/BOOTSTRAP.md](../zoro/BOOTSTRAP.md)
 - Shared agent coordination policy: [../AGENT_COORDINATION.md](../AGENT_COORDINATION.md)
 - Zoro inbox: [../zoro-inbox.md](../zoro-inbox.md)
 - Architect inbox: [../architect-inbox.md](../architect-inbox.md)
@@ -45,6 +48,7 @@
 - Kofi approved full technical Ideas Hub read/write access for both Zoro and Architect with governed authority. Their original instructions, approval gates, command scopes, and verification requirements remain authoritative.
 - Ideas Hub now has a two-way durable communication loop: `zoro-inbox.md` carries assignments and feedback to Zoro, while `architect-inbox.md` carries Zoro acknowledgements, progress, blockers, approval requests, and completion reports to Architect.
 - Architect run `tasks.md` and `report.md` remain authoritative for governed task and verification state. Zoro reports evidence but may not complete its own Architect task.
+- Zoro's version-controlled command center is defined under [`zoro/`](../zoro/README.md). It is not active in the live GPT until the repository change is merged, the bootstrap is installed in GPT Builder, and a fresh-conversation loading test passes.
 
 ## Accomplished
 
@@ -65,7 +69,7 @@
 
 ## Current Focus
 
-Install the updated coordination behavior in the Zoro and Architect instruction fields, then test the complete loop: Architect assigns an approved `ready` task through `zoro-inbox.md`; Zoro acknowledges and reports through `architect-inbox.md`; Architect independently verifies the evidence, updates authoritative run state when permitted, and sends feedback through `zoro-inbox.md`. In parallel, review and verify Context API pull request #2, reconcile the Action schema, deploy only a verified merge, complete the deletion smoke test, and remove the disposable branch.
+Review and merge the Zoro command-center change, install the minimal bootstrap in GPT Builder, and verify instruction loading in a fresh conversation. Then test the complete loop: Architect assigns an approved `ready` task through `zoro-inbox.md`; Zoro acknowledges and reports through `architect-inbox.md`; Architect independently verifies the evidence, updates authoritative run state when permitted, and sends feedback through `zoro-inbox.md`. In parallel, review and verify Context API pull request #2, reconcile the Action schema, deploy only a verified merge, complete the deletion smoke test, and remove the disposable branch.
 
 ## Brainstorming
 
@@ -98,13 +102,15 @@ Install the updated coordination behavior in the Zoro and Architect instruction 
 - Architect must independently verify Zoro evidence before updating authoritative task state or durable project truth.
 - Architect command-specific write boundaries remain authoritative.
 - The shared coordination rules supplement rather than replace each agent's existing instructions.
+- Zoro's canonical operating instructions live in Ideas Hub under `zoro/README.md` and `zoro/INSTRUCTIONS.md`; GPT Builder retains only the minimal loader from `zoro/BOOTSTRAP.md`.
+- Repository instruction changes and live GPT installation are separate states and require fresh-conversation verification before being described as active.
 
 ## Assumptions
 
 - OpenAI Actions remain suitable for the first orchestration MVP.
 - The installed GitHub App permissions are sufficient for approved code and pull-request operations, subject to repository rules.
 - Query-based deletion will work through OpenAI Actions after the backend fix is verified, deployed, and represented in the live Action schema.
-- Both GPT instruction fields have enough capacity for the compact updated instructions.
+- The GPT instruction field has enough capacity for the minimal repository bootstrap.
 - The two-inbox protocol will initially use branch-and-PR writes unless direct-main authority is explicit.
 
 ## Open Questions
@@ -135,7 +141,7 @@ Install the updated coordination behavior in the Zoro and Architect instruction 
 - [x] **Task 8 — Add access hardening:** optional repository allowlist support and documentation committed.
 - [x] **Task 9 — Add shared assignment inbox:** `zoro-inbox.md` is on Ideas Hub `main`.
 - [x] **Task 10 — Add durable return channel:** `architect-inbox.md` and the two-way communication protocol are on Ideas Hub `main`.
-- [ ] **Task 11 — Install updated agent instructions:** replace the current Zoro and Architect instruction fields with the approved compact versions and start fresh conversations.
+- [ ] **Task 11 — Install repository-backed agent instructions:** merge the command-center change, replace Zoro's full GPT instruction field with the minimal bootstrap, start a fresh conversation, and verify the reported instruction version and loaded files.
 - [ ] **Task 12 — Verify the full communication loop:** Architect assigns a ready task, Zoro reports durably, Architect verifies and responds, and neither agent exceeds authority.
 - [ ] Create and verify the Zoro project record in the Context API.
 - [ ] Link Zoro to Forge as Chief Orchestrator.
