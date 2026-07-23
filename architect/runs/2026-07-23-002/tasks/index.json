@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-07-23-002",
+  "authoritativePath": "architect/runs/2026-07-23-002/tasks.md",
+  "generatedAt": "2026-07-23T22:30:00Z",
+  "tasks": [
+    {
+      "taskId": "2026-07-23-002-taxify-T001",
+      "workKey": "taxify:seed-credential-remediation",
+      "project": "Taxify",
+      "repository": "kofiarhin/taxify",
+      "status": "ready",
+      "priority": "critical",
+      "path": "architect/runs/2026-07-23-002/tasks/2026-07-23-002-taxify-T001.md"
+    }
+  ]
+}
