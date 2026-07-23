@@ -1,24 +1,41 @@
 # Architect Run Artifacts
 
-## Purpose
+Run artifacts provide durable operational history for Architect audits, task governance, execution, verification, and resumption. They are not canonical project truth.
 
-Run artifacts provide durable operational history for Architect audits and execution. They support resumption, review, traceability, and reporting; they are not canonical project truth. Canonical project context remains in `PROJECTS.md`, relevant `projects/*.md` records, and repository-local authority documents.
-
-## Run IDs
-
-Each run directory uses `YYYY-MM-DD-NNN`, where `NNN` is a zero-padded sequence for that date. For example: `2026-07-18-001`.
-
-## Runtime Structure
+## Structure
 
 ```text
 architect/runs/<run-id>/
 ├── audit.md
 ├── tasks.md
+├── tasks/
+│   ├── index.json
+│   └── <task-id>.md
 └── report.md
 ```
 
-- `audit.md` records the source fingerprint, portfolio scan, audit evidence, reconciliation, findings, risks, blockers, and task-generation rationale.
-- `tasks.md` is the ordered durable task queue, including task status, evidence, approvals, verification requirements, and outcome.
-- `report.md` records execution state, approvals, branches, commits, pull requests, verification, Ideas Hub updates, risks, and the exact resume point.
+## Authority
 
-Completed historical runs must not be overwritten. No sample run in this repository is presented as real execution evidence; the first operational artifact is created only when an Architect command performs a real run.
+- `audit.md` records the source fingerprint, portfolio scan, reconciliation, findings, risks, blockers, and task-generation rationale.
+- `tasks.md` is the authoritative full task queue and task state.
+- `tasks/index.json` is a lightweight retrieval index.
+- `tasks/<task-id>.md` is a lightweight selected-task summary.
+- `report.md` records execution, verification, feedback, branches, commits, pull requests, checks, deployments, risks, and the exact resume point.
+
+The index and task shards never create competing task state. If they conflict with `tasks.md`, `tasks.md` wins and the retrieval files must be regenerated.
+
+## Run IDs
+
+Use `YYYY-MM-DD-NNN`. Never overwrite a completed historical run.
+
+## Loading
+
+Agents should:
+
+1. resolve the run;
+2. read `tasks/index.json` when present;
+3. load only the selected task shard;
+4. load the matching full section from `tasks.md` before implementation or authoritative state changes;
+5. load `audit.md` and `report.md` only when required.
+
+Historical runs without retrieval files continue to use `tasks.md`.
