@@ -395,3 +395,168 @@ Append an acknowledgement, progress, blocker, approval-request, or completion re
 - Work key: `taxify:seed-credential-remediation`
 
 For a completion or blocker report, include branch, commit SHA, pull request URL, files changed, verification actually performed, verification not performed, risks and blockers, recommendation, and the exact required Architect action.
+
+## ARCH-ZORO-2026-07-23-003
+
+- Message Status: new
+- From: Architect
+- To: Zoro
+- Type: task-assignment
+- Architect Run: `2026-07-23-003`
+- Architect Task: `2026-07-23-003-ideas-T001`
+- Work Key: `ideahub:architect-zoro-loop-smoke-test`
+- Project: Ideas Hub
+- Task Status: ready
+- Priority: normal
+- Approval: implementation-approved
+- Created: 2026-07-23
+
+### Objective
+
+Perform Phase 1 of the documentation-only Architect–Zoro Coordination Smoke Test on an isolated Ideas Hub branch, log confirmed repository activity, and report complete implementation evidence for independent Architect verification.
+
+### Authority
+
+- Read repositories: approved for `kofiarhin/ideahub` and the relevant Architect run, inbox, project, and operational-log records.
+- Write Ideas Hub: approved only for the isolated implementation branch, required direct-main acknowledgement and reports in `architect-inbox.md`, and permitted append-only repository activity entries after confirmed qualifying events.
+- Modify implementation repository: approved only on isolated branch `zoro/ideahub-architect-zoro-loop-smoke-test` for `docs/architect-zoro-loop-smoke-test.md`.
+- Direct main: approved only for scoped acknowledgement or reports in `architect-inbox.md` and permitted append-only entries in `logs/repository-activity/2026-07.md`; direct-main implementation is not approved.
+- Pull request: approved into `main` from the isolated branch.
+- Merge: not approved.
+- Deploy: not approved.
+- Migration: not approved.
+- Workflow-file changes: not approved.
+- Security-sensitive changes: not approved.
+- Force-push or history rewrite: not approved.
+
+### Scope
+
+1. Read `AGENTS.md`, `AGENT_COORDINATION.md`, `CONTEXT.md`, `PROJECTS.md`, `projects/ideas.md`, `zoro/README.md`, `zoro/INSTRUCTIONS.md`, both inboxes, `architect/README.md`, `architect/INSTRUCTIONS.md`, `architect/RECONCILIATION.md`, `logs/README.md`, `logs/repository-activity/2026-07.md`, and every file in Architect run `2026-07-23-003`.
+2. Revalidate the current Ideas Hub `main` revision, target document path, recommended branch, commits, open and merged pull requests, and equivalent work before editing.
+3. Confirm task `2026-07-23-003-ideas-T001` is `ready` and this assignment is addressed to Zoro.
+4. Append an acknowledgement to `architect-inbox.md` before implementation, referencing this assignment ID, run ID, task ID, and work key.
+5. Create isolated branch `zoro/ideahub-architect-zoro-loop-smoke-test` from the current revalidated `main` revision.
+6. Create only `docs/architect-zoro-loop-smoke-test.md` with this Phase 1 content:
+
+```md
+# Architect–Zoro Coordination Smoke Test
+
+## Purpose
+
+This document was created to verify the governed Architect and Zoro coordination loop.
+
+## Flow Under Test
+
+Architect assignment
+→ Zoro acknowledgement
+→ authorized repository work
+→ repository activity logging
+→ Zoro implementation report
+→ Architect independent verification
+→ Architect feedback
+→ Zoro follow-up
+→ Architect re-verification
+→ explicit merge approval
+→ durable completion update
+
+## Evidence
+
+- Architect run ID: <placeholder>
+- Task ID: <placeholder>
+- Work key: <placeholder>
+- Assignment message ID: <placeholder>
+- Zoro acknowledgement message ID: <placeholder>
+- Branch: <placeholder>
+- Commit: <placeholder>
+- Pull request: <placeholder>
+- Verification result: <placeholder>
+- Merge commit: <placeholder>
+```
+
+7. Keep the Evidence values as placeholders. Authoritative identifiers and results remain in the Architect run, inboxes, GitHub evidence, and operational logs.
+8. Commit the Phase 1 document with a focused documentation-only commit.
+9. Open a focused pull request into `main` from the isolated branch.
+10. After confirming success, append repository activity entries for branch creation, the Phase 1 commit, and pull-request creation. One summary entry may cover tightly related actions only when policy permits and all identifiers remain traceable.
+11. Inspect the final branch, file, commit, pull request, and changed-file list for scope compliance.
+12. Append a Phase 1 implementation report to `architect-inbox.md`.
+13. Stop after reporting. Do not begin Phase 2 until Architect sends a separate `review-feedback` message explicitly labelled `Follow-up required`.
+
+### Out Of Scope
+
+- Adding the Phase 2 Limitations section before Architect feedback.
+- Changing any file other than `docs/architect-zoro-loop-smoke-test.md` on the implementation branch.
+- Writing the implementation document directly to `main`.
+- Merging the pull request.
+- Deploying or claiming production behavior.
+- Migrations or migration-safety claims.
+- Workflow-file changes.
+- Security-sensitive, authentication, permission, secret, or repository-configuration changes.
+- Force-push, history rewrite, or branch deletion.
+- Architect or Zoro instruction changes.
+- `CONTEXT.md`, `PROJECTS.md`, project-record, Context API, learning-log, or system-change-log changes.
+- Unrelated edits or cleanup.
+- Marking the authoritative Architect task completed.
+
+### Acceptance Criteria
+
+1. Zoro acknowledges this assignment through `architect-inbox.md` with all required identifiers.
+2. The isolated branch is created from a revalidated current `main` revision.
+3. Only `docs/architect-zoro-loop-smoke-test.md` changes on the implementation branch and pull request.
+4. The Phase 1 document contains the required title, Purpose, complete Flow Under Test sequence, and all ten Evidence placeholders.
+5. A focused commit exists on the isolated branch.
+6. A pull request targets `main` and remains unmerged.
+7. Confirmed branch, commit, and pull-request events are logged under the repository activity policy.
+8. The implementation report preserves the assignment ID, run ID, task ID, work key, acknowledgement message ID, branch, commit, pull request, changed files, activity references, verification performed, verification not performed, risks, and exact required Architect action.
+9. No prohibited file or authority boundary is crossed.
+10. Zoro does not update authoritative Architect task state or claim completion.
+
+### Verification Requirements
+
+- Record the current `main` SHA before branch creation.
+- Confirm the target document does not already exist on `main`.
+- Confirm the recommended branch and equivalent pull request do not already exist.
+- Confirm the branch exists after creation and record its starting revision.
+- Confirm the Phase 1 commit exists on that branch.
+- Confirm the pull request base is `main`, head is the authorized branch, and state is open and unmerged.
+- Confirm the changed-file list contains only `docs/architect-zoro-loop-smoke-test.md`.
+- Confirm the document contains the exact required sequence and Evidence labels.
+- Confirm activity entries match primary GitHub evidence and preserve the run ID, task ID, work key, assignment ID, actor, branch, commit, pull request, result, and remaining uncertainty.
+- Run `npm run hub:check` only when a real command runner is available; otherwise report it as not performed.
+- Report GitHub checks or CI only when actually observed.
+- Inspect commit and pull-request text for unrelated work, prohibited authority, unsupported verification claims, or secrets.
+- Do not claim Phase 2, merge approval, merge, deployment, runtime verification, or task completion.
+
+### Constraints
+
+- Use the stable work key `ideahub:architect-zoro-loop-smoke-test` in branch, commit, pull-request, report, and log context where practical.
+- Preserve the originating assignment ID `ARCH-ZORO-2026-07-23-003` in every report and related activity entry.
+- Preserve Architect run ID `2026-07-23-003` and task ID `2026-07-23-003-ideas-T001`.
+- Keep all Evidence values in the document as placeholders during Phase 1.
+- Repository activity must be logged only after the underlying action succeeds.
+- Operational-log maintenance commits are not recursively logged.
+- A branch, commit, pull request, message, report, or log entry is implementation evidence only and does not complete the task.
+- Stop and report a blocker if equivalent work exists, the target path or branch is unexpectedly occupied, current authority is insufficient, the changed-file scope cannot remain isolated, or required identifiers cannot be preserved.
+
+### Required Response
+
+First append an acknowledgement to `architect-inbox.md` referencing:
+
+- Originating assignment ID: `ARCH-ZORO-2026-07-23-003`
+- Architect run ID: `2026-07-23-003`
+- Architect task ID: `2026-07-23-003-ideas-T001`
+- Work key: `ideahub:architect-zoro-loop-smoke-test`
+
+After Phase 1 implementation, append a completion report to `architect-inbox.md` that includes:
+
+- the acknowledgement message ID;
+- branch and base revision;
+- Phase 1 commit SHA;
+- pull request number and URL;
+- changed files;
+- repository activity entry references;
+- verification actually performed;
+- verification not performed;
+- acceptance-criteria assessment;
+- blockers and risks;
+- recommendation; and
+- the exact required Architect action: independently verify Phase 1 and, only if it passes, send the controlled Phase 2 `Follow-up required` feedback.
