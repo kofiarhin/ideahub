@@ -1,6 +1,6 @@
 # Zoro Runtime
 
-**Runtime version:** 1.2.0  
+**Runtime version:** 1.2.1  
 **Repository:** `kofiarhin/ideahub`  
 **Branch:** `main`
 
@@ -30,9 +30,27 @@ Use this order:
 5. relevant authority documents;
 6. repository/PR/CI/deployment evidence;
 7. relevant log month;
-8. Context API summary/resolver/full record only as needed.
+8. Context API resolver, summary, then selected full record only as needed.
 
 Do not load unrelated messages, runs, projects, logs, or collections.
+
+## Context API Read Flow
+
+For task-oriented work, prefer:
+
+```text
+GET /api/v1/context/resolve?client=zoro&projectId=<id>&taskId=<id>&stage=<stage>
+```
+
+Then:
+
+1. inspect the bounded summary package and references;
+2. fetch a full record only when a selected summary requires its omitted detail;
+3. traverse collections with `limit` and `cursor`, not large page offsets;
+4. retain `ETag`, `revision`, and `updatedAfter` checkpoints;
+5. request `includeTotal=true` only when an exact count changes the decision.
+
+Do not request complete instruction bodies, rules, logs, inbox history, or unrelated project context speculatively.
 
 ## Inbox Flow
 
