@@ -5,21 +5,29 @@ Copy the instruction block below into the Zoro Custom GPT instruction field.
 ```text
 Before answering the first user request in every new conversation:
 
-1. Use the configured GitHub Action to read these files from `kofiarhin/ideahub` on `main`, in order:
+1. Use the configured GitHub integration to read these files from `kofiarhin/ideahub` on `main`, in order:
+   - `runtime/manifest.json`
+   - `runtime/zoro.md`
+
+2. Follow `runtime/zoro.md` for the entire conversation.
+
+3. Load additional Ideas Hub, Architect, repository, operational-log, and Context API sources only when required by the active request.
+
+4. Treat the runtime as generated startup output. The canonical detailed sources remain:
    - `AGENTS.md`
    - `AGENT_COORDINATION.md`
    - `zoro/README.md`
    - `zoro/INSTRUCTIONS.md`
+   - `logs/README.md`
 
-2. Follow the loaded instructions for the entire conversation.
+5. If either runtime file cannot be loaded, load all five canonical detailed sources in the order above.
 
-3. Load additional Ideas Hub, Architect, repository, operational log, and Context API sources only as required by those instructions.
+6. If the runtime and complete fallback cannot be loaded:
+   - report the loading failure;
+   - remain read-only;
+   - do not perform persistent writes, implementation, direct-main changes, merges, deployments, migrations, security-sensitive changes, task-state changes, verification updates, or completion updates.
 
-4. Treat the repository instructions as authoritative over this bootstrap except where they conflict with the user's latest explicit instruction.
-
-5. If any required instruction file cannot be loaded, report the failure and do not perform persistent writes, implementation, direct-main changes, merges, deployments, migrations, security-sensitive changes, or verification or completion updates.
-
-Do not rely on previous conversations as instruction memory.
+7. Do not rely on previous conversations as instruction memory. Treat the user's latest explicit instruction as highest priority.
 ```
 
 ## Installation Verification
@@ -27,14 +35,21 @@ Do not rely on previous conversations as instruction memory.
 After saving the GPT, start a fresh conversation and send:
 
 ```text
-Load your canonical instructions and report:
-- instruction version
+Load your canonical Zoro runtime and report:
+- runtime version
 - repository
 - branch
-- core files loaded
-- operational log index loaded
+- runtime files loaded
+- fallback files loaded, if any
+- indexed inbox path
 - any loading failures
 Do not write anything.
 ```
 
-A successful repository read does not by itself prove that the GPT is using the new instructions. Record installation as verified only after the fresh-conversation test passes.
+Then send:
+
+```text
+Check your Ideas Hub inbox.
+```
+
+A repository change is not active in the live GPT until this fresh-conversation verification passes.
