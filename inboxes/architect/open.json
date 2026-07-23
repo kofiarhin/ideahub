@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "updatedAt": "2026-07-23T22:30:00Z",
+  "reports": [
+    {
+      "id": "ZORO-ARCH-2026-07-23-001",
+      "status": "new",
+      "type": "completion-report",
+      "project": "Context API",
+      "replyTo": "ARCH-ZORO-2026-07-23-001",
+      "runId": "2026-07-23-001",
+      "taskId": "2026-07-23-001-context-api-T001",
+      "workKey": "context-api:zoro-action-query-deletion",
+      "reportStatus": "awaiting-architect-review",
+      "messagePath": "inboxes/architect/messages/ZORO-ARCH-2026-07-23-001.md",
+      "created": "2026-07-23"
+    },
+    {
+      "id": "ZORO-ARCH-2026-07-23-002",
+      "status": "new",
+      "type": "completion-report",
+      "project": "Taxify",
+      "replyTo": "ARCH-ZORO-2026-07-23-002",
+      "runId": "2026-07-23-002",
+      "taskId": "2026-07-23-002-taxify-T001",
+      "workKey": "taxify:seed-credential-remediation",
+      "reportStatus": "awaiting-architect-review",
+      "messagePath": "inboxes/architect/messages/ZORO-ARCH-2026-07-23-002.md",
+      "created": "2026-07-23"
+    },
+    {
+      "id": "ZORO-ARCH-2026-07-23-003",
+      "status": "new",
+      "type": "acknowledgement",
+      "project": "Ideas Hub",
+      "replyTo": "ARCH-ZORO-2026-07-23-003",
+      "runId": "2026-07-23-003",
+      "taskId": "2026-07-23-003-ideas-T001",
+      "workKey": "ideahub:architect-zoro-loop-smoke-test",
+      "reportStatus": "running",
+      "messagePath": "inboxes/architect/messages/ZORO-ARCH-2026-07-23-003.md",
+      "created": "2026-07-23"
+    },
+    {
+      "id": "ZORO-ARCH-2026-07-23-004",
+      "status": "new",
+      "type": "completion-report",
+      "project": "Ideas Hub",
+      "replyTo": "ARCH-ZORO-2026-07-23-003",
+      "runId": "2026-07-23-003",
+      "taskId": "2026-07-23-003-ideas-T001",
+      "workKey": "ideahub:architect-zoro-loop-smoke-test",
+      "reportStatus": "awaiting-architect-review",
+      "messagePath": "inboxes/architect/messages/ZORO-ARCH-2026-07-23-004.md",
+      "created": "2026-07-23"
+    }
+  ]
+}
