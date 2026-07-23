@@ -1,6 +1,6 @@
 # Projects
 
-**Last updated:** 2026-07-22
+**Last updated:** 2026-07-23
 
 This is the only canonical project index for the Ideas Hub.
 
@@ -14,7 +14,7 @@ This is the only canonical project index for the Ideas Hub.
 | [Memory Sequence Game](projects/memory-sequence-game.md) | Responsive visual sequence-recall browser game | https://github.com/kofiarhin/memory-game | — | Exploring; MVP audited and fixes merged; CI passing; deployment pending |
 | [Ideas Hub](projects/ideas.md) | Markdown-first brainstorming workspace and durable cross-tool reference layer | https://github.com/kofiarhin/ideahub | — | This repository; `kofiarhin/ideas` remains a historical alias |
 | [Forge](projects/forge.md) | AI-powered software organization coordinating specialist agents from idea through verified launch preparation | https://github.com/kofiarhin/forge | — | Active; repository-local PRD/spec/audit added; executable MVP not implemented |
-| [Zoro](projects/zoro.md) | Forge Chief Orchestrator and Context API-connected Custom GPT | — | — | Active; project CRUD verified through OpenAI Actions; Forge linkage next |
+| [Zoro](projects/zoro.md) | Forge Chief Orchestrator and Context API-connected Custom GPT | https://github.com/kofiarhin/zoro | — | Active; repository linked on 2026-07-23; Forge linkage next |
 | [Context API](projects/context-api.md) | Centralized API for structured, reusable user, engineering, project, workflow, glossary, and learning context | https://github.com/kofiarhin/context-api | https://context-api-3b9dfadf403e.herokuapp.com | Active; strong docs; repository and live gateway verification evidence next |
 | [Codex Workflow Kit](projects/codex-workflow.md) | Reusable AI engineering workflow system | https://github.com/kofiarhin/codex-workflow-kit | — | PRD/spec/audit added; legacy artifact-path documentation needs reconciliation |
 | [Agent System](projects/agent-system.md) | Runtime-agnostic agent instruction system with deterministic generation and native runtime outputs | https://github.com/kofiarhin/agent-system | — | Active; streamlined setup/sync verified locally; CI/release evidence next |
@@ -24,6 +24,12 @@ This is the only canonical project index for the Ideas Hub.
 | [Banging Prices](projects/banging-prices.md) | Project details not yet documented | https://github.com/kofiarhin/banging-prices | — | Needs overview and current status |
 | [MoggOff](projects/moggoff.md) | Project details not yet documented | https://github.com/kofiarhin/moggedoff | — | Repository slug differs from project display name |
 | [ProjectOS](projects/projectos.md) | Archived autonomous development operating system for multi-repository local workspaces | https://github.com/kofiarhin/projectos | — | Archived; fresh security and repository review required before reactivation |
+| [Agency Landing Page](projects/agency-landing-page.md) | Repository-backed project; purpose and scope not yet documented | https://github.com/kofiarhin/agency-landing-page | — | Dedicated project record added 2026-07-23 |
+| [Repository Project Catalog](projects/repository-catalog.md) | Approved inventory of 194 additional repository-backed projects | — | — | Repository existence verified; lifecycle, priority, stack, and scope remain undocumented |
+
+## Repository Catalog Scope
+
+The [Repository Project Catalog](projects/repository-catalog.md) records 194 additional GitHub repositories approved by Kofi for Ideas Hub tracking on 2026-07-23. These entries are recorded without inferred lifecycle, priority, stack, live URL, or project purpose. Repositories requiring active project management should be promoted into dedicated `projects/<slug>.md` records after their details are confirmed.
 
 ## Lifecycle Guidance
 
