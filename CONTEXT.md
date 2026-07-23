@@ -37,6 +37,20 @@ Default engineering preferences unless a project says otherwise:
 - Jest and Supertest for backend tests
 - Environment variables for secrets and environment-specific configuration
 
+## Recent Accomplishments
+
+- Deployed Context API to Heroku and confirmed release `v14` from `main` revision `bf378b82ed04c88152c3cbb7550a590e63a19601` started successfully and connected to MongoDB.
+- Completed the authenticated GitHub Gateway foundation for Zoro with repository, branch, UTF-8 file, and pull-request operations plus branch protection, optimistic concurrency, non-force updates, workflow-file blocking, and optional repository allowlisting.
+- Produced a GPT Builder-compatible OpenAPI copy preserving all 27 Context API and GitHub operations after resolving Builder limitations around reusable parameters, path-level parameters, `allOf`, YAML aliases, and duplicate identifier names.
+- Configured the private Zoro GPT with Bearer authentication and verified live repository listing through the deployed Context API.
+- Verified controlled GitHub writes through Zoro for branch creation, file creation, readback, blob-SHA retrieval, and protection of `main`.
+- Identified a DELETE request-body transport defect, traced it to the Action client boundary, and used Zoro to create `fix/github-file-deletion` plus Context API pull request #2 with focused implementation and regression tests. The PR remains open, mergeable, and unverified.
+- Established Ideas Hub as the shared durable project brain for Zoro and Architect, while Context API remains the structured operational context service.
+- Added `AGENT_COORDINATION.md`, `zoro-inbox.md`, and `architect-inbox.md`, creating a governed two-way loop: Architect assigns approved `ready` work, Zoro reports evidence, Architect independently verifies it, and Architect sends durable feedback.
+- Defined mailbox IDs, run IDs, task IDs, work keys, authority boundaries, acceptance criteria, verification requirements, and the rule that mailbox status is never authoritative task status.
+- Prepared compact, copy-ready Zoro and Architect instruction sets that preserve each agent's original structure while adding the shared coordination and reporting model within the 8,000-character instruction limit.
+- Created Architect run `2026-07-23-001` and assigned ready task `2026-07-23-001-context-api-T001` to Zoro through `ARCH-ZORO-2026-07-23-001` for work key `context-api:zoro-action-query-deletion`.
+
 ## Project Landscape
 
 ### Personal systems and AI workflows
@@ -80,26 +94,27 @@ Default engineering preferences unless a project says otherwise:
 
 ## Current Priorities
 
-1. Install the updated Zoro and Architect instructions, start fresh conversations, and verify the complete two-way assignment, reporting, independent verification, feedback, and closure loop.
-2. Review and verify Context API pull request #2, reconcile the Action schema with query-based deletion, deploy the verified fix, and complete Zoro's delete-and-cleanup smoke test.
-3. Approve the smallest executable Forge MVP slice, including state transitions, authority boundaries, evidence requirements, and acceptance criteria.
-4. Implement and verify that Forge slice without implying the full multi-agent organization exists.
-5. Complete remaining repository and deployed-revision evidence for Brain and Agent System.
-6. Reconcile Codex Workflow Kit legacy documentation with its current run-scoped artifact model.
+1. Confirm the updated compact Zoro and Architect instructions are saved, then have Zoro pick up ready assignment `ARCH-ZORO-2026-07-23-001` and report through `architect-inbox.md`.
+2. Have Architect independently verify Zoro's schema pull request and send durable feedback through `zoro-inbox.md`.
+3. Verify Context API pull request #2, merge only after required checks and explicit authority, deploy the exact verified revision, republish the Action, and complete Zoro's delete-and-cleanup smoke test.
+4. Approve the smallest executable Forge MVP slice, including state transitions, authority boundaries, evidence requirements, and acceptance criteria.
+5. Implement and verify that Forge slice without implying the full multi-agent organization exists.
+6. Complete remaining repository and deployed-revision evidence for Brain and Agent System.
+7. Reconcile Codex Workflow Kit legacy documentation with its current run-scoped artifact model.
 
 ## Workspace Gaps
 
-- The two-way Zoro–Architect communication protocol is documented on Ideas Hub `main`, but the updated compact instruction sets still need to be pasted into both ChatGPT instruction fields and tested in fresh conversations.
-- The first live communication-loop task has not yet proven assignment matching, Zoro durable reporting, Architect independent verification, feedback, and closure.
+- The updated compact instruction sets have been prepared, but saving both configurations and validating them in fresh conversations has not been durably confirmed.
+- Architect created the first governed ready assignment, but Zoro has not yet durably acknowledged it, opened the schema pull request, or reported through `architect-inbox.md`.
+- The first communication-loop task has therefore not yet proven Zoro reporting, Architect independent verification, durable feedback, and closure.
+- Context API pull request #2 remains open and mergeable but has no recorded shell or CI verification and has not been merged or deployed.
+- The maintained Zoro Action schema still describes file deletion through a request body rather than the query-based interface proposed by pull request #2.
+- The disposable `zoro-smoke-test` branch and `tmp/zoro-smoke-test.txt` remain until deletion succeeds and cleanup evidence is retained.
 - Forge has strong initial product documentation but no executable orchestration foundation, tests, CI, API, persistence model, or deployment evidence.
-- Zoro can perform live GitHub reads and partial writes, but file deletion is blocked until Context API pull request #2 is verified, merged, deployed, represented in the Action schema, and proven through a final smoke test.
-- Context API pull request #2 has focused implementation and regression tests but no recorded shell or CI verification.
-- The disposable `zoro-smoke-test` branch and `tmp/zoro-smoke-test.txt` remain and must be removed after successful deletion evidence is captured.
 - Brain and Agent System need durable verification evidence tied to exact revisions and environments.
 - Codex Workflow Kit contains legacy architecture guidance that conflicts with its current `_workflow/runs/<run-id>/` model.
 - Archon is paused with strong specifications but no verified application implementation.
 - Several projects still need a clear purpose, lifecycle status, current focus, and next actions.
-- Architect audits depend on project records linking to current authoritative PRDs, specifications, plans, repositories, implementation revisions, and verification evidence.
 
 ## Maintenance Rule
 
