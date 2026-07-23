@@ -38,13 +38,49 @@
 - Deleting the temporary file failed with `ClientResponseError`. The branch and test file remain present.
 - The failure was traced to `DELETE /api/v1/github/files` relying on a JSON request body that OpenAI Actions did not reliably transmit.
 - Zoro created `fix/github-file-deletion`, changed four focused files, added regression tests, committed the work, and opened Context API pull request #2.
-- Pull request #2 is open and mergeable at head `654ebbc1bf8ada7b2ed339f342859204c6e88505`. It accepts query-based deletion input with JSON-body fallback while preserving workflow blocking, exact-SHA concurrency, branch forwarding, and safe error behavior.
-- Zoro did not execute shell verification because its connected tools do not provide a shell runner. No CI status is recorded for the PR head, so the change is implemented but unverified.
+- Pull request #2 remains open and mergeable at head `654ebbc1bf8ada7b2ed339f342859204c6e88505`. It accepts query-based deletion input with JSON-body fallback while preserving workflow blocking, exact-SHA concurrency, branch forwarding, and safe error behavior.
+- Zoro did not execute shell verification because its connected tools do not provide a shell runner. No passing CI or local command evidence is recorded, so the change is implemented but unverified.
 - The repository-maintained Action schema still describes deletion through a request body and must be reconciled before live verification.
-- Zoro's GitHub capability remains incomplete until pull request #2 is reviewed, verified, merged, deployed, represented in the live Action schema, exercised successfully, and cleaned up.
+- Zoro's GitHub capability remains incomplete until pull request #2 is verified, merged, deployed, represented in the live Action schema, exercised successfully, and cleaned up.
 - Kofi approved full technical Ideas Hub read/write access for both Zoro and Architect with governed authority. Their original instructions, approval gates, command scopes, and verification requirements remain authoritative.
 - Ideas Hub now has a two-way durable communication loop: `zoro-inbox.md` carries assignments and feedback to Zoro, while `architect-inbox.md` carries Zoro acknowledgements, progress, blockers, approval requests, and completion reports to Architect.
 - Architect run `tasks.md` and `report.md` remain authoritative for governed task and verification state. Zoro reports evidence but may not complete its own Architect task.
+
+## Progress Summary — 2026-07-23
+
+### Context And Actions
+
+- Connected Zoro to Context API and verified project CRUD.
+- Deployed and configured the authenticated GitHub Gateway for Zoro.
+- Produced a GPT Builder-compatible schema preserving all 27 operations.
+- Configured Bearer authentication without storing the credential in durable project records.
+
+### Live GitHub Evidence
+
+- Verified repository listing through a fresh Zoro conversation.
+- Verified disposable branch creation, UTF-8 file creation, readback, blob-SHA retrieval, and protection of `main`.
+- Confirmed that Zoro can investigate a defect, make focused source and test changes on a branch, commit them, and open a pull request without merging or deploying.
+
+### Defect Discovery And Remediation
+
+- Identified that OpenAI Actions did not reliably transmit the JSON body on the DELETE file operation.
+- Preserved the existing backend safety model while proposing query-based deletion with JSON-body fallback.
+- Opened Context API pull request #2 with four focused changed files, regression coverage, risks, and explicit verification gaps.
+
+### Ideas Hub And Architect Integration
+
+- Established Ideas Hub as the durable human-readable project brain and Context API as the structured operational context service.
+- Added and merged the shared `AGENT_COORDINATION.md` policy.
+- Added `zoro-inbox.md` for Kofi/Architect assignments and feedback to Zoro.
+- Added `architect-inbox.md` for Zoro acknowledgements, progress, blockers, approval requests, and completion reports.
+- Defined a complete communication loop in which Architect assigns approved `ready` work, Zoro reports evidence, Architect independently verifies it, and Architect sends feedback.
+- Preserved the rule that mailbox state is not task state and that Zoro cannot approve or complete its own Architect task.
+
+### Instruction And Test Preparation
+
+- Prepared compact copy-ready Zoro and Architect instructions under the 8,000-character configuration limit.
+- Preserved the original structure, discovery gates, execution boundaries, GitHub restrictions, and verification rules in both instruction sets.
+- Prepared a real end-to-end test task for Architect to assign the maintained Action schema update to Zoro and then independently review Zoro's report.
 
 ## Accomplished
 
@@ -62,10 +98,11 @@
 - Added `zoro-inbox.md` as the assignment and feedback channel to Zoro.
 - Added `architect-inbox.md` as Zoro's durable return channel to Architect.
 - Defined the assignment, acknowledgement, progress, blocker, verification, feedback, and closure loop while preserving Architect as the authority for task state and independent verification.
+- Prepared the full updated compact Zoro and Architect instruction sets and the first real communication-loop test task.
 
 ## Current Focus
 
-Install the updated coordination behavior in the Zoro and Architect instruction fields, then test the complete loop: Architect assigns an approved `ready` task through `zoro-inbox.md`; Zoro acknowledges and reports through `architect-inbox.md`; Architect independently verifies the evidence, updates authoritative run state when permitted, and sends feedback through `zoro-inbox.md`. In parallel, review and verify Context API pull request #2, reconcile the Action schema, deploy only a verified merge, complete the deletion smoke test, and remove the disposable branch.
+Save the updated coordination behavior in the Zoro and Architect instruction fields, start fresh conversations, and run the prepared real task: Architect assigns the approved query-deletion Action schema work through `zoro-inbox.md`; Zoro implements it on an isolated branch and reports through `architect-inbox.md`; Architect independently verifies the evidence, updates authoritative run state when permitted, and sends feedback through `zoro-inbox.md`. In parallel, verify Context API pull request #2, reconcile the schema, deploy only verified changes, complete the deletion smoke test, and remove the disposable branch.
 
 ## Brainstorming
 
@@ -116,6 +153,7 @@ Install the updated coordination behavior in the Zoro and Architect instruction 
 - Does pull request #2 pass the repository's clean verification commands?
 - Should the Builder-compatible schema be maintained directly or generated from the canonical OpenAPI source?
 - Has `README.md` readback through Zoro been explicitly completed, or only repository listing?
+- Have both compact instruction sets been saved and validated in fresh conversations?
 - Should mailbox writes become append-only direct-main operations after the loop is verified?
 - How should closed mailbox messages be archived without losing traceability?
 
@@ -135,8 +173,9 @@ Install the updated coordination behavior in the Zoro and Architect instruction 
 - [x] **Task 8 — Add access hardening:** optional repository allowlist support and documentation committed.
 - [x] **Task 9 — Add shared assignment inbox:** `zoro-inbox.md` is on Ideas Hub `main`.
 - [x] **Task 10 — Add durable return channel:** `architect-inbox.md` and the two-way communication protocol are on Ideas Hub `main`.
-- [ ] **Task 11 — Install updated agent instructions:** replace the current Zoro and Architect instruction fields with the approved compact versions and start fresh conversations.
-- [ ] **Task 12 — Verify the full communication loop:** Architect assigns a ready task, Zoro reports durably, Architect verifies and responds, and neither agent exceeds authority.
+- [x] **Task 11 — Prepare updated agent instructions:** compact copy-ready Zoro and Architect instructions were produced under the 8,000-character limit.
+- [ ] **Task 12 — Save and validate updated instructions:** confirm both instruction fields were saved and start fresh conversations.
+- [ ] **Task 13 — Verify the full communication loop:** Architect assigns a ready task, Zoro reports durably, Architect verifies and responds, and neither agent exceeds authority.
 - [ ] Create and verify the Zoro project record in the Context API.
 - [ ] Link Zoro to Forge as Chief Orchestrator.
 - [ ] Finalize Zoro's broader Forge orchestration instructions, status transitions, approval rules, specialist handoffs, and evidence records.
