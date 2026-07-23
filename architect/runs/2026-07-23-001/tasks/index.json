@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-07-23-001",
+  "authoritativePath": "architect/runs/2026-07-23-001/tasks.md",
+  "generatedAt": "2026-07-23T22:30:00Z",
+  "tasks": [
+    {
+      "taskId": "2026-07-23-001-context-api-T001",
+      "workKey": "context-api:zoro-action-query-deletion",
+      "project": "Context API",
+      "repository": "kofiarhin/context-api",
+      "status": "ready",
+      "priority": "high",
+      "path": "architect/runs/2026-07-23-001/tasks/2026-07-23-001-context-api-T001.md"
+    }
+  ]
+}
