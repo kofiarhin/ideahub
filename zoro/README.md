@@ -1,6 +1,6 @@
 # Zoro Command Center
 
-**Instruction version:** 1.3.0  
+**Instruction version:** 1.4.0  
 **Last updated:** 2026-07-24
 
 ## Purpose
@@ -14,7 +14,7 @@ Zoro starts from the compact generated runtime under [`../runtime/`](../runtime/
 Hot path:
 
 - [`../runtime/manifest.json`](../runtime/manifest.json) — runtime version and source fingerprints.
-- [`../runtime/zoro.md`](../runtime/zoro.md) — compact startup instructions.
+- [`../runtime/zoro.md`](../runtime/zoro.md) — compact startup and operating instructions.
 
 Canonical detailed sources:
 
@@ -47,6 +47,33 @@ A fresh conversation loads:
 
 If either fails, Zoro falls back to the canonical detailed files in the documented order. If fallback is incomplete, Zoro remains read-only.
 
+## Parallel Orchestration Runtime
+
+The executable bounded worker runtime lives in [`kofiarhin/zoro`](https://github.com/kofiarhin/zoro) under `server/orchestrator/`.
+
+Implemented runtime capabilities:
+
+- request decomposition into a validated dependency graph;
+- specialist roles for architecture, backend, frontend, review, QA, research, and documentation;
+- bounded fan-out/fan-in execution;
+- dependency-aware scheduling;
+- repository and path ownership conflict detection;
+- partial-result preservation through `Promise.allSettled` behavior;
+- structured worker evidence and aggregate run reporting;
+- in-memory run lookup.
+
+Current boundaries:
+
+- workers are model tasks, not separate approval authorities;
+- isolated Git worktrees, durable run persistence, automatic patch application, merge, and deployment are not implemented;
+- Zoro must not claim parallel execution unless the orchestration service actually returned a run record;
+- mutating worker output is proposed work or evidence unless primary GitHub readback proves a repository mutation.
+
+The initial service contract is:
+
+- `POST /api/orchestrations`
+- `GET /api/orchestrations/:runId`
+
 ## Shared Presence
 
 Presence protocol:
@@ -56,7 +83,7 @@ Presence protocol:
 
 Before starting or resuming meaningful implementation, Zoro reads the current record, reconciles conflicts, and establishes a 60-minute lease. Zoro has narrow standing direct-`main` authority only for presence transitions in `coordination/presence/zoro.json`; it must use the current blob SHA, avoid force updates, increment the record revision, and verify readback.
 
-Presence is advisory and never replaces assignments, Architect task state, inbox reports, repository evidence, verification, or completion decisions.
+Presence represents the supervising Zoro session. Worker-run state belongs in the orchestration runtime and does not become Architect task state, project truth, approval, or completion evidence.
 
 ## Indexed Inbox
 
@@ -88,11 +115,11 @@ When a message references a run:
 2. read only `architect/runs/<run-id>/tasks/<task-id>.md` when present;
 3. fall back to the legacy run `tasks.md` only when detailed content is unavailable from the shard.
 
-Authoritative task state remains in the Architect run.
+Authoritative task state remains in the Architect run. Parallel workers cannot change it.
 
 ## Authority
 
-Repository access and presence are not approval. Zoro must preserve user authority, Architect task state, branch isolation, repository protection, security, verification, and operational-log boundaries.
+Repository access, orchestration access, and presence are not approval. Zoro must preserve user authority, Architect task state, branch isolation, repository protection, security, verification, operational-log boundaries, and current runtime limitations.
 
 ## Installation Verification
 
@@ -104,6 +131,7 @@ After the loader is installed, start a fresh Zoro conversation and ask it to rep
 - fallback files loaded, if any;
 - indexed inbox path;
 - presence path and interpreted status;
+- parallel orchestration capability and current limitations;
 - loading failures.
 
 Then test:
@@ -112,4 +140,4 @@ Then test:
 Check your Ideas Hub inbox.
 ```
 
-Do not describe version `1.3.0` as active in the live GPT until the fresh-conversation test passes.
+Do not describe version `1.4.0` as active in the live GPT until the fresh-conversation test passes.
