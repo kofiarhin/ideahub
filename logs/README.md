@@ -1,23 +1,24 @@
 # Operational Logs
 
-**Last updated:** 2026-07-23
+**Last updated:** 2026-07-24
 
 ## Purpose
 
 The `logs/` directory is the shared operational memory layer for Ideas Hub. It preserves a concise chronological history of meaningful repository activity, verified system changes, and reusable evidence-supported learnings.
 
-Logs support investigation, reporting, reconciliation, and future work. They do not replace current project truth, repository evidence, Architect task state, or agent communication.
+Logs support investigation, reporting, reconciliation, and future work. They do not replace current project truth, repository evidence, Architect task state, agent communication, or advisory presence.
 
 ## Source-of-Truth Boundaries
 
 - `projects/<project>.md` stores verified durable project knowledge.
 - `architect/runs/<run-id>/tasks.md` stores authoritative governed task state.
 - `architect/runs/<run-id>/report.md` stores authoritative Architect execution and verification reporting.
-- `zoro-inbox.md` and `architect-inbox.md` carry agent assignments, reports, and feedback.
+- Indexed Zoro and Architect inboxes carry agent assignments, reports, and feedback.
+- `coordination/presence/zoro.json` stores advisory recent Zoro activity and lease state.
 - Source repositories, pull requests, checks, releases, and deployment systems remain the primary evidence for repository and runtime state.
 - `logs/` stores chronological supporting evidence and reusable lessons.
 
-A log entry never grants approval, changes task state, proves deployment, or marks work completed by itself.
+A presence record or log entry never grants approval, changes task state, proves deployment, or marks work completed by itself.
 
 ## Categories
 
@@ -33,7 +34,7 @@ Append-only monthly journals of meaningful repository writes and state transitio
 - repository configuration changes;
 - verified security remediation.
 
-Do not log read-only inspection, searches, repeated unchanged status checks, routine comments, or other noise.
+Do not log read-only inspection, searches, repeated unchanged status checks, routine presence start/renewal/waiting/blocked/release transitions, ordinary comments, or other noise.
 
 ### [`learnings/`](learnings/)
 
@@ -43,12 +44,12 @@ Do not store raw ideas, unsupported guesses, or secrets.
 
 ### [`system-changes/`](system-changes/)
 
-Monthly records of verified changes to Zoro, Architect, Ideas Hub governance, command workflows, Context API coordination, logging policy, and other shared operating systems.
+Monthly records of verified changes to Zoro, Architect, Ideas Hub governance, command workflows, Context API coordination, presence protocol, logging policy, and other shared operating systems.
 
 ## Read Rules
 
 - Zoro loads this index at the start of every fresh conversation after its four canonical instruction files.
-- Architect loads this index before repository execution, Zoro-report processing, or log maintenance.
+- Architect loads this index before repository execution, Zoro-report processing, reconciliation, or log maintenance.
 - Load only the monthly log files relevant to the active request, date range, project, repository, task, or system component.
 - Logs may be used to discover missing or stale records, but important claims must be checked against primary evidence when practical.
 
@@ -62,7 +63,7 @@ Write the entry only after confirming the action succeeded. Never pre-log intend
 
 For a series of tightly related writes performed as one atomic operation, one summary entry may cover the operation. Separate later state transitions such as CI completion, merge, deployment, rollback, or runtime verification require separate entries.
 
-Operational-log maintenance commits are not recursively logged. The entry describing the original repository event is sufficient. Mailbox and report-only updates are also excluded unless they themselves represent a material shared-system change.
+Operational-log maintenance commits are not recursively logged. Mailbox, report-only, and routine presence-only updates are also excluded unless they represent a material shared-system change, recovery incident, or protocol correction.
 
 ## Required Repository Activity Fields
 
@@ -103,18 +104,19 @@ When Zoro or Architect later discovers a meaningful unlogged event:
 
 ## Feedback Loop
 
-Repository logs are not a mailbox.
+Repository logs and presence are not mailboxes.
 
 For Architect-governed work:
 
-1. Architect assigns approved `ready` work through `zoro-inbox.md`.
-2. Zoro acknowledges and performs only authorized work.
-3. Zoro appends confirmed repository activity and reports progress, blockers, approval requests, or implementation evidence through `architect-inbox.md`.
-4. Architect matches the report to the message ID, run ID, task ID, and work key.
-5. Architect independently verifies primary repository and operational evidence, using logs only as supporting history.
+1. Architect checks current Zoro presence and assigns approved `ready` work through the indexed Zoro inbox.
+2. Zoro acknowledges, establishes or reconciles presence, and performs only authorized work.
+3. Zoro appends confirmed repository activity and reports progress, blockers, approval requests, or implementation evidence through the indexed Architect inbox; routine presence-only transitions are not logged.
+4. Architect matches the report to the message ID, run ID, task ID, work key, and applicable presence session.
+5. Architect independently verifies primary repository and operational evidence, using presence and logs only as supporting context.
 6. Architect updates authoritative run files when permitted.
-7. Architect sends acceptance, rejection, questions, or follow-up instructions through `zoro-inbox.md`.
-8. The loop repeats until Architect verifies completion and required durable updates succeed.
+7. Architect sends acceptance, rejection, questions, or follow-up instructions through the indexed Zoro inbox.
+8. Zoro updates or releases presence as the work session changes.
+9. The loop repeats until Architect verifies completion and required durable updates succeed.
 
 ## Append-Only And Correction Rules
 
@@ -134,6 +136,6 @@ Never log:
 - unsupported completion, deployment, or verification claims;
 - raw private content that is not necessary for traceability;
 - speculative accusations or unverified security claims;
-- routine API calls or read-only noise.
+- routine API calls, presence heartbeats, or read-only noise.
 
 Keep facts, evidence, inference, assumptions, and recommendations distinct.
