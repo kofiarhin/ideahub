@@ -1,6 +1,6 @@
 # Forge
 
-**Last updated:** 2026-07-22
+**Last updated:** 2026-07-24
 
 ## Snapshot
 
@@ -17,68 +17,81 @@
 - Codebase audit: https://github.com/kofiarhin/forge/blob/main/docs/CODEBASE_AUDIT.md
 - Context API: [context-api.md](context-api.md)
 - Zoro: [zoro.md](zoro.md)
+- Zoro orchestration runtime: https://github.com/kofiarhin/zoro/blob/main/docs/PARALLEL_ORCHESTRATION.md
 
 ## Current State
 
 - **Forge** is the approved name for the top-level AI software organization.
-- Forge is distinct from Zoro: Forge is the organization, while Zoro is its Chief Orchestrator.
-- The Context API is the shared organizational memory and system of record used by Forge agents.
+- Forge is distinct from Zoro: Forge is the organization, while Zoro is its Chief Orchestrator and user-facing supervisor.
+- Context API is the shared organizational memory and structured system of record used by Forge agents.
 - The approved MVP organization includes Zoro, Architect, Builder, Reviewer, QA, Legal, Marketing, and SEO.
 - Architect, Builder, Reviewer, QA, Legal, Marketing, and SEO begin as Forge modules rather than separate top-level projects.
-- A Forge repository now exists on `main` with an improved README, a repository-local PRD, a proposed technical specification, and a codebase audit.
-- The audit found no executable application, package manifest, tests, API contract, CI workflow, deployment configuration, data model, or runtime entry point before the documentation work.
-- Forge is therefore a documented product and architecture scaffold, not an implemented orchestration system.
-- Proposed components, integrations, security controls, agent execution, state transitions, and deployment behavior must not be described as implemented until repository evidence and verification exist.
+- The Forge repository contains an improved README, repository-local PRD, proposed technical specification, and codebase audit.
+- The Forge repository still has no executable application, package manifest, tests, API contract, CI workflow, deployment configuration, data model, or runtime entry point.
+- `kofiarhin/zoro` now contains the first executable bounded parallel-worker foundation associated with the Forge direction.
+- The Zoro runtime can decompose requests into validated dependency graphs, run compatible model workers concurrently, preserve partial results, and aggregate structured evidence.
+- The implemented Zoro slice is not the complete Forge organization. It has no durable orchestration persistence, isolated Git worktrees, automatic worker patch application, production deployment, or full specialist tool adapters.
+- Proposed Forge components, integrations, security controls, agent execution, state transitions, and deployment behavior must not be described as implemented unless supported by repository and verification evidence.
 
 ## Current Focus
 
-Approve the smallest executable Forge MVP slice and its authority boundaries before beginning implementation. The first slice should establish deterministic task state, one-repository coordination, isolated GitHub interaction, evidence capture, and verification without attempting the full multi-agent organization.
+Use the bounded Zoro worker runtime as the first executable orchestration experiment. Verify a read-only multi-worker demonstration, then design durable run persistence and isolated worker execution before allowing parallel repository mutation. Keep the broader Forge repository as the product and architecture authority until an approved executable Forge slice is defined.
 
 ## Brainstorming
 
 - Future specialist agents for product discovery, release operations, security, research, customer feedback, finance, sales, and support
 - Promotion of mature Forge modules into independently versioned projects
-- Event-driven synchronization between Forge workflow records, GitHub, and the Ideas Hub
+- Event-driven synchronization between Forge workflow records, GitHub, Ideas Hub, and Context API
 - Reusable Forge templates for other founders or software teams
+- A shared worker adapter protocol usable by Zoro, Architect, and future Forge services
+- Durable orchestration dashboards, approvals, leases, evidence, costs, and recovery controls
 
 ## Decisions
 
 - The top-level project is named **Forge**.
 - Forge is an AI-powered software organization, not merely an agent framework.
 - Zoro is the Chief Orchestrator within Forge and is not the parent organization.
-- Context API remains a separate infrastructure project and serves as Forge's shared memory and system of record.
-- Zoro remains a separately maintained project because it has a distinct orchestration purpose and can evolve independently.
+- Context API remains a separate infrastructure project and serves as Forge's shared memory and structured system of record.
+- Zoro remains a separately maintained project because it has a distinct orchestration purpose and executable service repository.
 - The MVP specialist roles are Architect, Builder, Reviewer, QA, Legal, Marketing, and SEO.
 - Specialist roles other than Zoro start as Forge modules, not separate projects.
-- Only tasks with status `ready` may be implemented.
-- One Builder may actively own a task at a time.
+- Only tasks with status `ready` may be implemented or dispatched for governed implementation.
+- One Builder may actively own one mutating task scope at a time.
+- Parallel read-only workers are permitted when dependencies and authority are explicit.
+- Parallel mutating workers require isolated worktrees or sandboxes and non-overlapping ownership.
 - Builders cannot approve or complete their own work; Reviewer and QA provide independent verification.
-- Every agent must retrieve current context before acting and must produce evidence for its work.
-- A required-stage failure stops downstream execution and results in a `blocked` or `failed` state.
+- Every worker must retrieve current bounded context before acting and produce structured evidence.
+- A required-stage failure blocks downstream work while preserving successful sibling evidence.
 - Marketing and SEO may reference only QA-verified and released features.
-- Human approval remains mandatory for implementation and other material or sensitive decisions.
+- Human approval remains mandatory for implementation authority and material or sensitive decisions.
 - Repository documentation must distinguish proposed architecture from verified implementation.
+- The bounded Zoro runtime is an implemented experiment, not evidence that the full Forge organization exists.
 
 ## Assumptions
 
-- The Context API can represent the Forge project, linked projects, tasks, and documentation records without immediate schema changes.
-- The first Forge implementation can coordinate one repository and one active Builder per task.
+- Context API can represent Forge projects, linked projects, tasks, documentation, evidence, and relationships without immediate destructive schema changes.
+- MongoDB can support durable orchestration runs, jobs, attempts, leases, approvals, and evidence.
+- Git worktrees or sandboxes can provide safe isolation for future parallel mutating workers.
 - Legal provides first-pass risk review and does not replace qualified legal counsel.
 
 ## Open Questions
 
-- Which document is the final approved implementation authority for the first executable slice?
+- Which document is the final approved implementation authority for the first executable Forge slice?
+- Should the Zoro runtime become Forge's initial run engine or remain an adapter behind a separate Forge service?
 - Which Context API entities should hold Forge modules, documentation, evidence, relationships, and agent authority rules?
 - How should Context API and Ideas Hub synchronization avoid competing sources of truth?
-- Which runtime will execute specialist agents during the first end-to-end demonstration?
-- What constitutes a formal release event for the Marketing and SEO gates in the MVP?
+- Where should durable worker leases, approvals, costs, and artifacts live?
+- Which runtime will execute sandboxed mutating specialists during the first end-to-end demonstration?
+- What constitutes a formal release event for the Marketing and SEO gates?
 - What credential scope, approval model, concurrency policy, recovery behavior, and audit-storage contract will govern execution?
 
 ## Next Actions
 
-1. Review and approve the repository-local PRD and proposed technical specification as implementation authority, or record required changes.
-2. Define the minimum executable slice, acceptance criteria, task state transitions, evidence schema, and agent authority boundaries.
-3. Create implementation work only after the slice is approved and marked `ready`.
-4. Build a small executable foundation with deterministic state transitions, isolated GitHub integration, and automated tests.
-5. Verify the first end-to-end demonstration and reconcile the repository documentation and this project record against the verified revision.
-6. Complete and verify the Forge and Zoro project records and relationships in Context API.
+1. Verify Zoro runtime version `1.4.0` and a harmless read-only multi-worker orchestration run.
+2. Record the orchestration service deployment and authentication decision.
+3. Approve the durable run, job, lease, approval, evidence, and artifact model.
+4. Implement MongoDB-backed resumable runs with deterministic state transitions.
+5. Add isolated Git worktrees or sandboxes and scoped worker tool adapters.
+6. Add independent executable Reviewer and QA checks.
+7. Reconcile the Forge PRD and technical specification with the verified Zoro experiment without presenting the full organization as implemented.
+8. Define and approve the smallest end-to-end Forge slice that moves one ready task through isolated implementation and independent verification.
