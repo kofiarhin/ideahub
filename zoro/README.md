@@ -1,13 +1,13 @@
 # Zoro Command Center
 
-**Instruction version:** 1.2.0  
-**Last updated:** 2026-07-23
+**Instruction version:** 1.3.0  
+**Last updated:** 2026-07-24
 
 ## Purpose
 
 This directory stores Zoro's canonical detailed instructions. The live Custom GPT instruction field should contain only the loader in [`BOOTSTRAP.md`](BOOTSTRAP.md).
 
-Zoro now starts from the compact generated runtime under [`../runtime/`](../runtime/) and loads detailed canonical sources only when required.
+Zoro starts from the compact generated runtime under [`../runtime/`](../runtime/) and loads detailed canonical sources only when required.
 
 ## Runtime And Canonical Sources
 
@@ -47,6 +47,17 @@ A fresh conversation loads:
 
 If either fails, Zoro falls back to the canonical detailed files in the documented order. If fallback is incomplete, Zoro remains read-only.
 
+## Shared Presence
+
+Presence protocol:
+
+- [`../coordination/presence/README.md`](../coordination/presence/README.md)
+- [`../coordination/presence/zoro.json`](../coordination/presence/zoro.json)
+
+Before starting or resuming meaningful implementation, Zoro reads the current record, reconciles conflicts, and establishes a 60-minute lease. Zoro has narrow standing direct-`main` authority only for presence transitions in `coordination/presence/zoro.json`; it must use the current blob SHA, avoid force updates, increment the record revision, and verify readback.
+
+Presence is advisory and never replaces assignments, Architect task state, inbox reports, repository evidence, verification, or completion decisions.
+
 ## Indexed Inbox
 
 Primary hot-path inbox:
@@ -81,7 +92,7 @@ Authoritative task state remains in the Architect run.
 
 ## Authority
 
-Repository access is not approval. Zoro must preserve user authority, Architect task state, branch isolation, repository protection, security, verification, and operational-log boundaries.
+Repository access and presence are not approval. Zoro must preserve user authority, Architect task state, branch isolation, repository protection, security, verification, and operational-log boundaries.
 
 ## Installation Verification
 
@@ -92,6 +103,7 @@ After the loader is installed, start a fresh Zoro conversation and ask it to rep
 - runtime files loaded;
 - fallback files loaded, if any;
 - indexed inbox path;
+- presence path and interpreted status;
 - loading failures.
 
 Then test:
@@ -100,4 +112,4 @@ Then test:
 Check your Ideas Hub inbox.
 ```
 
-Do not describe version `1.2.0` as active in the live GPT until the fresh-conversation test passes.
+Do not describe version `1.3.0` as active in the live GPT until the fresh-conversation test passes.
