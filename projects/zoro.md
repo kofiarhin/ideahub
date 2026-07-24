@@ -1,225 +1,111 @@
 # Zoro
 
-**Last updated:** 2026-07-23
+**Last updated:** 2026-07-24
 
 ## Snapshot
 
 - **Lifecycle:** Active
-- **Summary:** Custom GPT and Forge Chief Orchestrator that coordinates governed software workflows using the Context API.
-- **Repository:** Uses Ideas Hub for its command center; no separate implementation repository
+- **Summary:** Forge Chief Orchestrator, governed GitHub operator, and Context API-connected Custom GPT with a local React/Express execution service.
+- **Repository:** https://github.com/kofiarhin/zoro
 - **Owner:** Kofi Arhin
 
 ## Links
 
+- Repository: https://github.com/kofiarhin/zoro
 - Forge: [forge.md](forge.md)
 - Context API: [context-api.md](context-api.md)
 - Zoro command center: [../zoro/README.md](../zoro/README.md)
 - Canonical Zoro instructions: [../zoro/INSTRUCTIONS.md](../zoro/INSTRUCTIONS.md)
 - GPT Builder bootstrap: [../zoro/BOOTSTRAP.md](../zoro/BOOTSTRAP.md)
-- Shared agent coordination policy: [../AGENT_COORDINATION.md](../AGENT_COORDINATION.md)
+- Generated runtime: [../runtime/zoro.md](../runtime/zoro.md)
+- Runtime manifest: [../runtime/manifest.json](../runtime/manifest.json)
+- Shared coordination policy: [../AGENT_COORDINATION.md](../AGENT_COORDINATION.md)
 - Operational log policy: [../logs/README.md](../logs/README.md)
-- Repository activity: [../logs/repository-activity/2026-07.md](../logs/repository-activity/2026-07.md)
-- Operational learnings: [../logs/learnings/2026-07.md](../logs/learnings/2026-07.md)
-- System changes: [../logs/system-changes/2026-07.md](../logs/system-changes/2026-07.md)
-- Zoro inbox: [../zoro-inbox.md](../zoro-inbox.md)
-- Architect inbox: [../architect-inbox.md](../architect-inbox.md)
-- Architect runs: [../architect/runs/README.md](../architect/runs/README.md)
-- GitHub Gateway specification: https://github.com/kofiarhin/context-api/blob/main/docs/GITHUB_GATEWAY_SPEC.md
-- GitHub Gateway implementation plan: https://github.com/kofiarhin/context-api/blob/main/docs/GITHUB_GATEWAY_IMPLEMENTATION_PLAN.md
-- Maintained Action schema: https://github.com/kofiarhin/context-api/blob/main/docs/openapi/zoro-action.yaml
-- Release checklist: https://github.com/kofiarhin/context-api/blob/main/docs/GITHUB_GATEWAY_RELEASE_CHECKLIST.md
-- Open deletion-fix pull request: https://github.com/kofiarhin/context-api/pull/2
+- Parallel orchestration documentation: https://github.com/kofiarhin/zoro/blob/main/docs/PARALLEL_ORCHESTRATION.md
+- Context API GitHub Gateway specification: https://github.com/kofiarhin/context-api/blob/main/docs/GITHUB_GATEWAY_SPEC.md
 
 ## Current State
 
 - A private Custom GPT named **Zoro** exists and is connected to the deployed Context API through OpenAI Actions.
-- End-to-end project CRUD has been verified through Zoro against the existing context routes.
-- A dedicated GitHub App for Zoro is installed with metadata read, contents read/write, and pull-request read/write permissions.
-- GitHub App credentials and the dedicated Bearer credential are stored in Heroku configuration; secret values are excluded from Ideas Hub and the repository.
-- The GitHub Gateway implementation, tests, documentation, Octokit dependency, release validator, release checklist, and optional repository allowlist are committed to `kofiarhin/context-api` `main`.
-- The maintained repository schema targets the production Context API and declares 27 operations: 15 context operations and 12 authenticated GitHub operations.
-- GPT Builder rejected several valid OpenAPI composition patterns used by the maintained schema. A flattened Builder-compatible copy was created and accepted with all 27 actions visible.
-- Zoro's Action authentication is configured as API Key with Bearer transport using `ZORO_GITHUB_API_KEY`; the key value is not recorded here.
-- A fresh Zoro conversation successfully listed repositories available through the GitHub App installation.
-- The controlled write smoke test partially succeeded: Zoro created `zoro-smoke-test` from `main`, created and read `tmp/zoro-smoke-test.txt`, retrieved blob SHA `98e0aa9e27c7f0fb860d44429e475fe12771cf8f`, and confirmed `main` remained unchanged.
-- Deleting the temporary file failed with `ClientResponseError`. The branch and test file remain present.
-- The failure was traced to `DELETE /api/v1/github/files` relying on a JSON request body that OpenAI Actions did not reliably transmit.
-- Zoro created `fix/github-file-deletion`, changed four focused files, added regression tests, committed the work, and opened Context API pull request #2.
-- Pull request #2 remains open and mergeable at head `654ebbc1bf8ada7b2ed339f342859204c6e88505`. It accepts query-based deletion input with JSON-body fallback while preserving workflow blocking, exact-SHA concurrency, branch forwarding, and safe error behavior.
-- Zoro did not execute shell verification because its connected tools do not provide a shell runner. No passing CI or local command evidence is recorded, so the change is implemented but unverified.
-- The repository-maintained Action schema still describes deletion through a request body and must be reconciled before live verification.
-- Zoro's GitHub capability remains incomplete until pull request #2 is verified, merged, deployed, represented in the live Action schema, exercised successfully, and cleaned up.
-- Kofi approved full technical Ideas Hub read/write access for both Zoro and Architect with governed authority. Their original instructions, approval gates, command scopes, and verification requirements remain authoritative.
-- Ideas Hub has a two-way durable communication loop: `zoro-inbox.md` carries assignments and feedback to Zoro, while `architect-inbox.md` carries Zoro acknowledgements, progress, blockers, approval requests, and implementation-complete reports to Architect.
-- Architect run `tasks.md` and `report.md` remain authoritative for governed task and verification state. Zoro reports evidence but may not complete its own Architect task.
-- Architect created run `2026-07-23-001` and assigned ready task `2026-07-23-001-context-api-T001` through message `ARCH-ZORO-2026-07-23-001` for work key `context-api:zoro-action-query-deletion`.
-- Zoro's version-controlled command center is defined under [`zoro/`](../zoro/README.md).
-- Zoro instruction version `1.0.1` was verified in a fresh conversation after the version-controlled loading test.
-- Zoro instruction version `1.1.0` is now on Ideas Hub `main` with the operational-memory and feedback-loop rules, but live GPT loading of `1.1.0` and `logs/README.md` remains unverified until a fresh conversation test passes.
-- Ideas Hub now contains an operational-memory layer under `logs/` for repository activity, reusable learnings, and shared-system changes.
-- Meaningful repository actions performed by Zoro or Architect must be confirmed before they are appended to repository activity when the active workflow permits Ideas Hub maintenance.
-- Operational logs are supporting chronological evidence. They do not replace GitHub evidence, inbox messages, Architect run state, project truth, deployment evidence, or independent verification.
-- Architect's `run all tasks` workflow now processes matching Zoro reports, independently verifies evidence, sends feedback through `zoro-inbox.md`, records permitted activity, and repeats the loop until a legitimate terminal state is reached.
-
-## Progress Summary — 2026-07-23
-
-### Context And Actions
-
-- Connected Zoro to Context API and verified project CRUD.
-- Deployed and configured the authenticated GitHub Gateway for Zoro.
-- Produced a GPT Builder-compatible schema preserving all 27 operations.
-- Configured Bearer authentication without storing the credential in durable project records.
-
-### Live GitHub Evidence
-
-- Verified repository listing through a fresh Zoro conversation.
-- Verified disposable branch creation, UTF-8 file creation, readback, blob-SHA retrieval, and protection of `main`.
-- Confirmed that Zoro can investigate a defect, make focused source and test changes on a branch, commit them, and open a pull request without merging or deploying.
-
-### Defect Discovery And Remediation
-
-- Identified that OpenAI Actions did not reliably transmit the JSON body on the DELETE file operation.
-- Preserved the existing backend safety model while proposing query-based deletion with JSON-body fallback.
-- Opened Context API pull request #2 with four focused changed files, regression coverage, risks, and explicit verification gaps.
-
-### Ideas Hub And Architect Integration
-
-- Established Ideas Hub as the durable human-readable project brain and Context API as the structured operational context service.
-- Added and merged the shared `AGENT_COORDINATION.md` policy.
-- Added `zoro-inbox.md` for Kofi/Architect assignments and feedback to Zoro.
-- Added `architect-inbox.md` for Zoro acknowledgements, progress, blockers, approval requests, and implementation-complete reports.
-- Defined a complete communication loop in which Architect assigns approved `ready` work, Zoro reports evidence, Architect independently verifies it, and Architect sends feedback.
-- Preserved the rule that mailbox state is not task state and that Zoro cannot approve or complete its own Architect task.
-
-### Operational Memory And Feedback
-
-- Added `logs/README.md` as the shared operational-log policy and index.
-- Added monthly repository-activity, learnings, and system-change logs.
-- Made repository activity append-only and excluded recursive logging of log-maintenance commits.
-- Required Zoro to load the operational log index after its four canonical startup files.
-- Required Zoro to confirm meaningful repository actions before logging and to continue formal reporting through `architect-inbox.md`.
-- Updated Architect's command system and `run all tasks` workflow to process Zoro reports, independently verify evidence, send feedback, and maintain permitted logs.
-- Kept logs separate from project truth, inbox communication, primary evidence, and authoritative task state.
-
-### Instruction And Live Task Preparation
-
-- Prepared compact copy-ready Zoro and Architect instructions under the 8,000-character configuration limit.
-- Preserved the original structure, discovery gates, execution boundaries, GitHub restrictions, and verification rules in both instruction sets.
-- Defined a version-controlled Zoro command center in Ideas Hub with a canonical entrypoint, full instructions, and a minimal GPT Builder bootstrap.
-- Updated the repository-backed Zoro instructions to version `1.1.0` and clarified the one-time Builder bootstrap.
-- Kept repository implementation separate from live GPT activation; fresh-conversation verification remains required for version `1.1.0`.
-- Architect created the first live governed run and ready task for the maintained Action query-deletion schema update.
-- The assignment authorizes an isolated Context API branch, focused schema and directly required validation/documentation changes, a pull request, and a durable report to `architect-inbox.md`.
-- Merge, deployment, direct Context API `main` writes, live GPT Action updates, secret changes, and authentication-policy changes remain explicitly unauthorized.
-
-## Accomplished
-
-- Completed the repository-side GitHub Gateway implementation required for Zoro.
-- Corrected the maintained Action schema to target the production Context API deployment.
-- Added release validation and an aggregate verification command for the backend repository.
-- Added optional repository allowlist enforcement, automated coverage, and configuration documentation.
-- Added a controlled release and smoke-test checklist.
-- Preserved branch protection, non-force branch updates, optimistic concurrency, and workflow-file write blocking.
-- Produced and installed a GPT Builder-compatible schema with all 27 actions visible.
-- Configured Bearer authentication in GPT Builder without exposing the secret.
-- Verified live repository listing, branch creation, UTF-8 file creation, readback, SHA retrieval, and protection of `main`.
-- Demonstrated that Zoro can inspect a defect, create a focused branch, edit source and tests, commit changes, and open a pull request without merging or deploying.
-- Opened Context API pull request #2 with documented scope, regression coverage, risks, manual verification instructions, and explicit unverified status.
-- Added `zoro-inbox.md` as the assignment and feedback channel to Zoro.
-- Added `architect-inbox.md` as Zoro's durable return channel to Architect.
-- Defined the assignment, acknowledgement, progress, blocker, verification, feedback, and closure loop while preserving Architect as the authority for task state and independent verification.
-- Prepared the full updated compact Zoro and Architect instruction sets.
-- Created Architect run `2026-07-23-001`, authoritative ready task `2026-07-23-001-context-api-T001`, and assignment `ARCH-ZORO-2026-07-23-001` on Ideas Hub `main`.
-- Added the operational-memory folder and integrated it into Zoro and Architect workflows.
+- End-to-end Context API project CRUD and controlled GitHub repository operations have been exercised through Zoro.
+- Zoro's canonical repository-backed instructions are stored in Ideas Hub and loaded through the generated runtime/bootstrap model.
+- The live GPT must be tested in a fresh conversation before instruction version `1.4.0` is described as active.
+- `kofiarhin/zoro` contains a React/Vite client, Express server, workspace-scoped file tools, allowlisted command execution, and an OpenAI-compatible chat proxy.
+- `kofiarhin/zoro` `main` now contains a bounded parallel model-worker orchestration runtime under `server/orchestrator/`.
+- The runtime supports request decomposition, validated dependency graphs, bounded fan-out/fan-in scheduling, specialist worker roles, repository/path conflict detection, partial-failure preservation, structured evidence aggregation, and in-memory run lookup.
+- The orchestration API is exposed through `POST /api/orchestrations` and `GET /api/orchestrations/:runId`.
+- The default configured maximum is four parallel workers, capped by server configuration.
+- Nine Node tests passed locally before publication, covering parallel execution, dependency ordering, path conflicts, graph cycles, partial failures, and aggregate evidence.
+- GitHub readback confirmed the scheduler and test suite on `main` at final implementation commit `9383afb58c698cc6e8d15293c20c8727b4d7088c`.
+- No GitHub Actions workflow exists in the Zoro repository, so no CI result is available for this change.
+- The current worker runtime performs parallel model tasks. It does not yet create isolated Git worktrees, apply patches automatically, persist runs across restarts, merge branches, or deploy software.
+- Mutating worker output remains proposed work or evidence until a primary GitHub mutation is independently confirmed.
+- Zoro and its workers cannot approve or complete their own Architect tasks.
+- Ideas Hub presence still represents the supervising Zoro conversation, not every worker job.
+- The existing Context API deletion-remediation and Heroku Gateway work remain separate governed workstreams and are not completed by this orchestration update.
 
 ## Current Focus
 
-Install the current one-time Zoro bootstrap in GPT Builder and verify in a fresh conversation that Zoro reports instruction version `1.1.0` and loads `logs/README.md`. Then perform one harmless authorized repository action to verify that Zoro confirms the action, appends the repository activity entry, reports governed work through `architect-inbox.md`, and receives Architect feedback through `zoro-inbox.md`. Continue the existing Context API deletion-remediation and verification work only within its recorded authority.
+Verify Zoro instruction version `1.4.0` in a fresh GPT conversation, configure a reachable orchestration service for the live GPT, and run a harmless multi-worker demonstration using read-only research, review, QA, or documentation jobs. Do not enable concurrent code mutation until isolated worktrees or sandboxes and durable run persistence are implemented and verified.
 
 ## Brainstorming
 
-- Expand Actions to coding conventions, instruction sets, glossary, Ideas Hub metadata, and learnings
-- Add specialist-agent routing and structured handoffs beyond Zoro and Architect
-- Add workflow dashboards, audit trails, run summaries, and mailbox views
-- Add per-project access profiles where a repository should not inherit the full installation scope
-- Generate the GPT Builder-compatible schema from the maintained repository schema to prevent manual drift
-- Consider append-only direct-`main` mailbox writes after the branch-and-PR communication loop is proven reliable
+- MongoDB-backed orchestration runs, worker jobs, leases, approvals, evidence, and artifacts
+- One Git worktree or sandbox per mutating worker
+- Scoped worker tool adapters for repository reads, patches, commands, and tests
+- Cancellation, retries, resumable approvals, and dead-letter handling
+- Worker dashboards, dependency graphs, cost tracking, and run timelines
+- Context API synchronization for durable cross-session orchestration records
+- Additional specialists for security, legal, marketing, SEO, release operations, and product research
+- Generated GPT Action schemas for the Zoro orchestration service
 
 ## Decisions
 
 - Zoro is a separately maintained project within Forge, not the top-level organization.
-- Zoro is responsible for orchestration, context retrieval, routing, approvals, progress tracking, and verified Context API updates.
-- Zoro must retrieve relevant Context API data before making project recommendations.
-- Zoro must ask for approval before persistent writes unless an approved workflow already authorizes them.
-- Zoro must not approve its own work, bypass verification, invent project state, or mark unverified work completed.
-- Zoro's GitHub access is provided through authenticated `/api/v1/github` routes in the existing Context API Action.
-- Zoro may read repositories, branches, directories, and files; create and update branches without force-pushing; create, update, and delete UTF-8 files; and create, read, update, close, and merge pull requests subject to explicit authority and repository rules.
-- Zoro must honor branch protection, optimistic concurrency, and the `.github/workflows` write prohibition.
-- All Zoro GitHub routes require a dedicated Bearer credential separate from public context endpoints.
-- A pull request created by Zoro is implementation evidence, not completion evidence; local or CI verification remains required before merge or deployment.
-- Zoro and Architect have full technical read/write access to Ideas Hub through their available tools.
-- Full access does not grant unlimited authority: durable changes must remain scoped to the active request or approved workflow and preserve approval, security, merge, deployment, and verification gates.
-- `zoro-inbox.md` is the durable Kofi/Architect → Zoro channel.
-- `architect-inbox.md` is the durable Zoro → Architect channel.
-- Mailbox status is not authoritative task status.
-- Zoro must reference the originating message, Architect run, task ID, and work key in durable reports when provided.
-- Zoro may report implemented work and evidence but may not directly mark an Architect task completed.
-- Architect must independently verify Zoro evidence before updating authoritative task state or durable project truth.
-- Architect command-specific write boundaries remain authoritative.
-- The shared coordination rules supplement rather than replace each agent's existing instructions.
+- Forge is the organization; Zoro is its Chief Orchestrator and user-facing supervisor.
+- Zoro's executable service repository is `kofiarhin/zoro`.
 - Zoro's canonical operating instructions live in Ideas Hub under `zoro/README.md` and `zoro/INSTRUCTIONS.md`; GPT Builder retains only the minimal loader from `zoro/BOOTSTRAP.md`.
-- Repository instruction changes and live GPT installation are separate states and require fresh-conversation verification before being described as active.
-- `logs/` is the shared operational-memory layer for verified repository activity, reusable learnings, and shared-system changes.
-- Operational logs are supporting chronological evidence and cannot approve work, change task state, prove deployment, or mark work completed.
-- Zoro and Architect must confirm meaningful repository actions before appending permitted activity entries.
-- Repository activity logging does not replace Zoro-to-Architect reporting or Architect-to-Zoro feedback.
-- Operational-log maintenance commits are not recursively logged.
+- Repository instruction changes and live GPT activation are separate states and require fresh-conversation verification.
+- The initial parallel runtime is bounded to model-worker fan-out/fan-in, not autonomous parallel repository mutation.
+- The default maximum is four concurrent workers.
+- Initial worker roles are Architect, backend Builder, frontend Builder, general Builder, Reviewer, QA, Research, and Documentation.
+- Every worker job must have a stable identity, objective, dependencies, authority, owned paths, acceptance criteria, and structured result.
+- Read-only workers may run concurrently.
+- Jobs with overlapping repository or path ownership must be serialized unless verified isolation exists.
+- `Promise.allSettled`-style behavior preserves successful sibling results when one worker fails.
+- Worker `completed` means the delegated job returned a result; it is not authoritative task or project completion.
+- Worker output cannot grant approval, verify itself, merge, deploy, migrate, or change Architect task state.
+- Primary repository, CI, deployment, and runtime evidence remains authoritative for implementation claims.
+- Human approval remains mandatory for material scope, migrations, destructive operations, security-sensitive changes, direct-main work unless explicitly authorized, merges, deployments, and production configuration.
+- Context API remains the structured machine context service; Ideas Hub remains durable human-readable project context.
+- Operational logs remain supporting chronology and cannot replace primary evidence or verification.
 
 ## Assumptions
 
-- OpenAI Actions remain suitable for the first orchestration MVP.
-- The installed GitHub App permissions are sufficient for approved code and pull-request operations, subject to repository rules.
-- Query-based deletion will work through OpenAI Actions after the backend fix is verified, deployed, and represented in the live Action schema.
-- The GPT instruction field has enough capacity for the minimal repository bootstrap.
-- The two-inbox protocol will initially use branch-and-PR writes unless direct-main authority is explicit.
+- The configured OpenAI-compatible provider can handle several concurrent chat-completion requests within its own limits.
+- A hosted or locally reachable Zoro orchestration API can later be exposed to the live Custom GPT through a governed Action.
+- MongoDB is suitable for the next durable orchestration persistence step.
+- Git worktrees or sandboxes can provide the required isolation for future mutating workers.
 
 ## Open Questions
 
-- What runtime and transport should Zoro use to invoke specialist agents?
-- How should Zoro acquire and enforce task locks for single-Builder ownership?
-- Which future workflows require explicit human approval versus workflow-level preauthorization?
-- Which repositories should eventually use narrower allowlists or per-project policies?
-- Does pull request #2 pass the repository's clean verification commands?
-- Should the Builder-compatible schema be maintained directly or generated from the canonical OpenAPI source?
-- Has `README.md` readback through Zoro been explicitly completed, or only repository listing?
-- Has Zoro version `1.1.0` and `logs/README.md` loading been verified in a fresh conversation?
-- Will Zoro append the correct repository activity and preserve the Architect feedback loop during a live harmless test?
-- Will Zoro acknowledge and complete the assigned schema work without exceeding its stated authority?
-- Should mailbox writes become append-only direct-main operations after the loop is verified?
-- How should closed mailbox messages be archived without losing traceability?
+- Where will the orchestration service be deployed and how will the live GPT authenticate to it?
+- Should orchestration persistence live directly in Zoro's MongoDB database or be exposed through Context API?
+- Which tool protocol should mutating workers use for iterative reads, patches, commands, and verification?
+- How should worker leases, cancellation, retries, and interrupted-run recovery work?
+- How should integration branches combine independently verified worker branches?
+- Which jobs may be preauthorized and which always require a human approval interruption?
+- When should the single Zoro presence record evolve into a supervisor record plus durable worker-run records?
+- Has live GPT runtime version `1.4.0` been verified in a fresh conversation?
 
 ## Next Actions
 
-### Zoro GitHub Completion Tasks
-
-- [x] **Task 1 — Correct and validate the Action schema:** production URL committed; 27-operation contract retained; repository validator added.
-- [ ] **Task 2 — Confirm backend verification:** run `npm ci`, focused deletion tests, and `npm run verify` from a clean checkout of `fix/github-file-deletion`; preserve passing output or repair failures.
-- [x] **Task 3 — Confirm current deployment:** Heroku release `v14` deployed `main` revision `bf378b82ed04c88152c3cbb7550a590e63a19601`. A new deployment is still required after the deletion fix is verified and merged.
-- [x] **Task 4 — Configure GPT Builder:** the Builder-compatible schema was accepted, Bearer authentication was configured, Zoro was saved, and a fresh conversation was started.
-- [ ] **Task 5 — Verify GitHub reads through Zoro:** repository listing is verified; explicitly read `README.md` from `kofiarhin/context-api` on `main` and retain the result if not already completed.
-- [ ] **Task 6 — Verify GitHub writes through Zoro:** branch creation, file creation, readback, SHA retrieval, and `main` protection passed; deletion failed and remains outstanding.
-- [ ] **Task 6A — Complete deletion remediation:** review and verify Context API pull request #2, update the maintained Action schema for query parameters, merge, deploy, and republish the Action.
-- [ ] **Task 6B — Repeat live deletion:** delete `tmp/zoro-smoke-test.txt` from `zoro-smoke-test` using blob SHA `98e0aa9e27c7f0fb860d44429e475fe12771cf8f`, verify absence, confirm `main` is unchanged, and delete the disposable branch.
-- [ ] **Task 7 — Close the delivery:** record verification, merge, deployment, Action configuration, read/write evidence, and cleanup before marking GitHub access available.
-- [x] **Task 8 — Add access hardening:** optional repository allowlist support and documentation committed.
-- [x] **Task 9 — Add shared assignment inbox:** `zoro-inbox.md` is on Ideas Hub `main`.
-- [x] **Task 10 — Add durable return channel:** `architect-inbox.md` and the two-way communication protocol are on Ideas Hub `main`.
-- [x] **Task 11 — Prepare updated agent instructions:** compact copy-ready Zoro and Architect instructions were produced under the 8,000-character limit.
-- [ ] **Task 12 — Validate repository-backed instructions 1.1.0:** install the current bootstrap, start a fresh conversation, and verify instruction version `1.1.0`, the four core files, and `logs/README.md`.
-- [x] **Task 13 — Create first governed assignment:** Architect run `2026-07-23-001`, task `2026-07-23-001-context-api-T001`, and assignment `ARCH-ZORO-2026-07-23-001` exist on Ideas Hub `main`.
-- [ ] **Task 14 — Zoro executes and reports:** Zoro acknowledges the ready schema task, opens the focused Context API PR, records permitted activity, and writes the required report to `architect-inbox.md`.
-- [ ] **Task 15 — Architect verifies and responds:** Architect independently verifies Zoro evidence, updates run state when permitted, and sends feedback through `zoro-inbox.md`.
-- [ ] **Task 16 — Verify operational-memory loop:** perform a harmless authorized repository action, confirm the repository activity entry, process the Zoro report, and verify Architect feedback reaches `zoro-inbox.md`.
-- [ ] Create and verify the Zoro project record in the Context API.
-- [ ] Link Zoro to Forge as Chief Orchestrator.
-- [ ] Finalize Zoro's broader Forge orchestration instructions, status transitions, approval rules, specialist handoffs, and evidence records.
+1. Start a fresh Zoro GPT conversation and verify runtime version `1.4.0`, source loading, indexed inbox paths, presence interpretation, and orchestration limitations.
+2. Configure or deploy the Zoro Express service so the live GPT can reach the orchestration endpoints securely.
+3. Add the orchestration endpoints to a maintained GPT Action schema with explicit authentication.
+4. Run a harmless two-to-four worker read-only demonstration and retain the returned run record.
+5. Add MongoDB persistence for runs, jobs, attempts, approvals, evidence, leases, and artifacts.
+6. Add isolated Git worktrees or sandboxes before enabling concurrent mutating workers.
+7. Add scoped tool adapters and independent executable Reviewer/QA verification.
+8. Add CI for the Zoro repository and verify the orchestration suite from a clean checkout.
+9. Continue existing Context API GitHub Gateway and deletion-remediation work only within its separate recorded authority.
