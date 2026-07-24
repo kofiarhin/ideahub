@@ -1,6 +1,6 @@
 # Projects
 
-**Last updated:** 2026-07-23
+**Last updated:** 2026-07-24
 
 This is the only canonical project index for the Ideas Hub.
 
@@ -13,8 +13,8 @@ This is the only canonical project index for the Ideas Hub.
 | [DevKofi](projects/devkofi.md) | MERN mentorship and learning platform | https://github.com/kofiarhin/devkofi | https://devkofi.com/ | Includes mentee onboarding and internal tooling |
 | [Memory Sequence Game](projects/memory-sequence-game.md) | Responsive visual sequence-recall browser game | https://github.com/kofiarhin/memory-game | — | Exploring; MVP audited and fixes merged; CI passing; deployment pending |
 | [Ideas Hub](projects/ideas.md) | Markdown-first brainstorming workspace and durable cross-tool reference layer | https://github.com/kofiarhin/ideahub | — | This repository; `kofiarhin/ideas` remains a historical alias |
-| [Forge](projects/forge.md) | AI-powered software organization coordinating specialist agents from idea through verified launch preparation | https://github.com/kofiarhin/forge | — | Active; repository-local PRD/spec/audit added; executable MVP not implemented |
-| [Zoro](projects/zoro.md) | Forge Chief Orchestrator and Context API-connected Custom GPT | https://github.com/kofiarhin/zoro | — | Active; repository linked on 2026-07-23; Forge linkage next |
+| [Forge](projects/forge.md) | AI-powered software organization coordinating specialist agents from idea through verified launch preparation | https://github.com/kofiarhin/forge | — | Active; Zoro bounded worker runtime is the first executable orchestration experiment; full Forge runtime not implemented |
+| [Zoro](projects/zoro.md) | Forge Chief Orchestrator, governed GitHub operator, and bounded parallel-worker supervisor | https://github.com/kofiarhin/zoro | — | Active; parallel model-worker runtime implemented on `main`; live GPT/service integration still requires verification |
 | [Context API](projects/context-api.md) | Centralized API for structured, reusable user, engineering, project, workflow, glossary, and learning context | https://github.com/kofiarhin/context-api | https://context-api-3b9dfadf403e.herokuapp.com | Active; strong docs; repository and live gateway verification evidence next |
 | [Codex Workflow Kit](projects/codex-workflow.md) | Reusable AI engineering workflow system | https://github.com/kofiarhin/codex-workflow-kit | — | PRD/spec/audit added; legacy artifact-path documentation needs reconciliation |
 | [Agent System](projects/agent-system.md) | Runtime-agnostic agent instruction system with deterministic generation and native runtime outputs | https://github.com/kofiarhin/agent-system | — | Active; streamlined setup/sync verified locally; CI/release evidence next |
@@ -30,10 +30,10 @@ This is the only canonical project index for the Ideas Hub.
 
 ## Repository Coverage
 
-All 212 repositories accessible through the installed GitHub App are now represented in Ideas Hub without removing any existing project:
+All 212 repositories accessible through the installed GitHub App are represented in Ideas Hub without removing any existing project:
 
 - Existing dedicated project records were preserved.
-- `kofiarhin/zoro` was linked to the existing Zoro project.
+- `kofiarhin/zoro` is linked to the Zoro project and now contains the executable local service and bounded worker runtime.
 - Agency Landing Page and Agenda Boys have dedicated project files.
 - The [Repository Project Catalog](projects/repository-catalog.md) records the remaining imported repositories. Agenda Boys remains listed in the catalog as part of the original import inventory as well as having a dedicated record.
 
